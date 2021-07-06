@@ -8,12 +8,10 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
 <body>
 <nav th:replace="fragments/header.html :: navbar"></nav>
-<div class="container container-p5" style="padding-top: 30px;">
-    <h1 th:text="${film.title}">Film Title</h1>
-    <br>
+<div class="container container-p5" style="padding-top: 2rem;">
+    <h1 th:text="${film.title}" style="padding-bottom: 1rem;">Film Title</h1>
     <p>Film Description: <span th:text="${film.filmDescription}">Description</span></p>
     <p>Release Date: <span th:text="${film.releaseDate}">Release Date</span></p>
     <p>Language: <span th:text="${film.language}">Language</span></p>

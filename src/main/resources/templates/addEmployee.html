@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-
+<div class="container container-p5" style="padding-top: 2rem;">
+    <h1 style="padding-bottom: 1rem;">Add an employee</h1>
+    <form action="/addEmployee" method="post">
+        <label>Username</label>
+        <label><input type="text" name="username"></label>
+        <br>
+        <label>Password</label>
+        <label><input type="text" name="password"></label>
+        <br>
+        <label>First name</label>
+        <label><input type="text" name="firstName"></label>
+        <br>
+        <label>Last name</label>
+        <label><input type="text" name="lastName"></label>
+        <br>
+        <label>Email</label>
+        <label><input type="email" name="email"></label>
+        <br>
+        <label>Address</label>
+        <label><input type="text" name="address"></label>
+        <br>
+        <label>Store</label>
+        <label><input type="text" name="store"></label>
+        <br>
+        <label>Picture link</label>
+        <label><input type="text" name="pictureLink"></label>
+        <br>
+        <input type="submit" value="Add Employee">
+    </form>
+</div>
 </body>
 </html>
