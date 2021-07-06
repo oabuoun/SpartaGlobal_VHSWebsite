@@ -53,6 +53,6 @@ public class FilmService {
     }
 
     public List<FilmEntity> filter(String firstName, String lastName, String title, String genre){
-        return filmRepository.findFilmsFromFilter(firstName, lastName, title, genre); 
+        return filmRepository.findFilmsFromFilter(firstName, lastName, title, genre);
     }
 }
