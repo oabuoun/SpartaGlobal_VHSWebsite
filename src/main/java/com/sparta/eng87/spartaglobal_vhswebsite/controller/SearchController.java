@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SearchController {
 
 
-    private VHSService vhsService;
+    private FilmService filmService;
 
     @Autowired
-    public SearchController(VHSService vhsService){
-        this.vhsService=vhsService;
+    public SearchController(FilmService filmService){
+        this.filmService=filmService;
     }
 
 

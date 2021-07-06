@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 
-    private VHSService vhsService;
+    private FilmService filmService;
 
     @Autowired
-    public UserController(VHSService vhsService){
-        this.vhsService=vhsService;
+    public UserController(FilmService filmService){
+        this.filmService=filmService;
     }
 
     @GetMapping("/user/{id}")
     public String userPage(@PathVariable("id") Integer id, Model model)
     {
-        model.addAttribute("currentlyRented", vhsService.findCurrenltyRented);
-        model.addAttribute("previouslyRented", vhsService.findpreviouslyRented);
+        model.addAttribute("currentlyRented", filmService.findCurrenltyRented);
+        model.addAttribute("previouslyRented", filmService.findpreviouslyRented);
         return "user";
     }
 

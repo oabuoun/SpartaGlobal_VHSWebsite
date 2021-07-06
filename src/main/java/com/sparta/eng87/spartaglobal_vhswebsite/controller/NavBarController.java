@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class NavBarController {
 
 
-    private VHSService vhsService;
+    private FilmService filmService;
 
     @Autowired
-    public NavBarController(VHSService vhsService){
-        this.vhsService=vhsService;
+    public NavBarController(FilmService filmService){
+        this.filmService=filmService;
     }
 
 
@@ -35,17 +35,17 @@ public class NavBarController {
     }
 
     @PostMapping("/search")
-    public String navBarSearch(@RequestParam(name = "search") String title, @RequestParam(name = "box") String box,Model model ){
+    public String navBarSearch(@RequestParam(name = "search") String title, @RequestParam(name = "searchBy") String box,Model model ){
 
         switch(box) {
             case "title":
-                model.addAttribute("VHS", vhsService.findByTitle);
+                model.addAttribute("search", filmService.findByTitle);
                 break;
             case "actor":
-                model.addAttribute("VHS", vhsService.findByActor);
+                model.addAttribute("search", filmService.findByActor);
                 break;
             case "genre":
-                model.addAttribute("VHS", vhsService.findByGenre);
+                model.addAttribute("search", filmService.findByGenre);
                 break;
         }
 

@@ -9,20 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
 
-    private VHSService vhsService;
+    private FilmService filmService;
 
     @Autowired
-    public HomeController(VHSService vhsService){
-        this.vhsService=vhsService;
+    public HomeController(FilmService filmService){
+        this.filmService=filmService;
     }
 
 
    @GetMapping("/")
     public String getVHSForDisplay(Model model){
 
-        model.addAttribute("popularVHS", vhsService.findPopular);
-        model.addAttribute("returnedVHS",vhsService.findReturned);
-       model.addAttribute("recentVHS",vhsService.findByRecent);
+        model.addAttribute("popularVHS", filmService.findPopular);
+        model.addAttribute("returnedVHS",filmService.findReturned);
+       model.addAttribute("recentVHS",filmService.findByRecent);
 
         return "index";
 

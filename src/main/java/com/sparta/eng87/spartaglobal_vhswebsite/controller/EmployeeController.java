@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class EmployeeController {
 
-    // TODO
+    //  add in the other functions a employee will have
 
 
-    private VHSService vhsService;
+    private FilmService filmService;
     private CustomerService customerService;
 
     @Autowired
-    public EmployeeController(VHSService vhsService, CustomerService customerService){
-        this.vhsService=vhsService;
+    public EmployeeController(FilmService filmService, CustomerService customerService){
+        this.filmService=filmService;
         this.customerService =customerService;
     }
 
     @PostMapping("/addVHS")
     public void addVHS(){
-        VHSEntity vhsEntity = new VHSEntity;
-        vhsService.save(vhsEntity);
+        FilmEntity filmEntity = new FilmEntity;
+        filmService.save(filmEntity);
     }
 
     @PostMapping("/addcustomer")
