@@ -19,7 +19,6 @@ public class SearchController {
     }
 
 
-    // needs refinement depending on ui and query teams
     @PostMapping("/refine")
     public String refineSearch(@RequestParam(name = "genre", required = false)String genre,
                                @RequestParam(name = "language", required = false) String language,
@@ -44,9 +43,9 @@ public class SearchController {
         }
 
         // TODO check the ordering of the inputs
-        model("filteredResults", filmService.filter(genre,language,actor,title));
+        model.addAttribute("filteredResults", filmService.filter(genre,language,actor,title));
 
-        return "resuts"
+        return "resuts";
 
 
     }

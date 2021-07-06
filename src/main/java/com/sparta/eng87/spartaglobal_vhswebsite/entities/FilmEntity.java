@@ -24,6 +24,25 @@ public class FilmEntity {
     private String specialFeatures;
     private Timestamp lastUpdate;
 
+    public FilmEntity() {
+    }
+
+    public FilmEntity(Integer filmId, String title, String description, Integer releaseYear, Integer languageId, Integer originalLanguageId, Integer rentalDuration, BigDecimal rentalRate, Integer length, BigDecimal replacementCost, String rating, String specialFeatures, Timestamp lastUpdate) {
+        this.filmId = filmId;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.languageId = languageId;
+        this.originalLanguageId = originalLanguageId;
+        this.rentalDuration = rentalDuration;
+        this.rentalRate = rentalRate;
+        this.length = length;
+        this.replacementCost = replacementCost;
+        this.rating = rating;
+        this.specialFeatures = specialFeatures;
+        this.lastUpdate = lastUpdate;
+    }
+
     @Id
     @Column(name = "film_id")
     public Integer getFilmId() {
