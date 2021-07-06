@@ -1,11 +1,14 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.repositories;
 
+import com.sparta.eng87.spartaglobal_vhswebsite.entities.FilmEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface SearchbarRepository extends JpaRepository<FilmEntity, Integer> {
+public interface FilmRepository extends JpaRepository<FilmEntity, Integer> {
 
     @Query(value = "SELECT f.* FROM film f WHERE f.title LIKE %?1%;", nativeQuery = true)
     List<FilmEntity> findFilmsFromTitle (String title);
@@ -22,6 +25,9 @@ public interface SearchbarRepository extends JpaRepository<FilmEntity, Integer> 
             "WHERE a.first_name LIKE %?1% AND a.last_name LIKE %?2%", nativeQuery = true)
     List<FilmEntity> findFilmsFromActor (String firstName, String lastName);
 
-    @Query(value = "SELECT f.* FROM film f WHERE f.genre = ?", nativeQuery = true)
+    @Query(value = "SELECT f.* FROM film f " +
+            "INNER JOIN film_category fc ON f.film_id = fc.film_id" +
+            "INNER JOIN category c ON fc.category_id = c.category_id" +
+            "WHERE c.name = ?", nativeQuery = true)
     List<FilmEntity> findFilmsFromGenre (String genre);
 }
