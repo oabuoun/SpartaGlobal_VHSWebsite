@@ -10,8 +10,7 @@ import java.util.List;
 @Repository
 public interface FilmsRepository extends JpaRepository<FilmEntity,Integer> {
 
-    @Query(value = "select * From film where film_id=?",nativeQuery = true)
-    FilmEntity getFilmByID(int ID);
+
 
 
 

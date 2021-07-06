@@ -40,4 +40,7 @@ public interface FilmRepository extends JpaRepository<FilmEntity, Integer> {
             "AND f.title LIKE %?2%" +
             "AND c.name LIKE %?3%", nativeQuery = true)
     List<FilmEntity> findFilmsFromFilter (String firstName, String lastName, String title, String genre);
+
+    @Query(value = "select * From film where film_id=?",nativeQuery = true)
+    FilmEntity getFilmByID(int ID);
 }

@@ -5,6 +5,7 @@ package com.sparta.eng87.spartaglobal_vhswebsite.services;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.FilmEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.InventoryEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.RentalEntity;
+import com.sparta.eng87.spartaglobal_vhswebsite.repositories.FilmRepository;
 import com.sparta.eng87.spartaglobal_vhswebsite.repositories.FilmsRepository;
 import com.sparta.eng87.spartaglobal_vhswebsite.repositories.InventoryRepository;
 import com.sparta.eng87.spartaglobal_vhswebsite.repositories.RentalRepository;
@@ -17,12 +18,12 @@ import java.util.List;
 @Service
 public class HomePageFilmsService {
 
-    private FilmsRepository films;
+    private FilmRepository films;
     private InventoryRepository inventory;
     private RentalRepository rentals;
 
     @Autowired
-    public HomePageFilmsService(FilmsRepository films,InventoryRepository inventory,RentalRepository rentals){
+    public HomePageFilmsService(FilmRepository films, InventoryRepository inventory, RentalRepository rentals){
         this.films=films;
         this.inventory=inventory;
         this.rentals= rentals;
@@ -38,7 +39,7 @@ public class HomePageFilmsService {
             returnedInventory.add(getInventoryEntitiesByInventoryId(rent.getInventoryId()));
         }
         int i=0;
-        while (films.size()<4){
+        while (films.size()<3){
             if(i<returnedInventory.size()){
                 if(filmsAlreadySelected.contains(returnedInventory.get(i).getFilmId())!=true){
                     filmsAlreadySelected.add(returnedInventory.get(i).getFilmId());
