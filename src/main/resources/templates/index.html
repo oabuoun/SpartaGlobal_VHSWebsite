@@ -20,9 +20,51 @@
     <div class="card-deck mb-3 text-center">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
-                <h4 class="my-0 font-weight-normal" th:text="${recentVHS[0].title}">Movie 1</h4>
+                <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[0].title}">Movie 1</h4>
             </div>
             <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li th:text="${returnedVHS[0].description}">Desc1</li>
+                </ul>
+                <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[1].title}">Movie2</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li th:text="${returnedVHS[1].description}">Desc 2</li>
+                </ul>
+                <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
+            </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[2].title}">Movie3</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li th:text="${returnedVHS[2].description}">Desc 3</li>
+                </ul>
+                <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Recently Added</h1>
+</div>
+
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal" th:text="${recentVHS[0].title}">Movie 1</h4>
+            </div>
+            <div class="card-body" >
                 <ul class="list-unstyled mt-3 mb-4">
                     <li th:text="${recentVHS[0].description}">Desc1</li>
                 </ul>
@@ -47,48 +89,6 @@
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
                     <li th:text="${recentVHS[2].description}">Desc 3</li>
-                </ul>
-                <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
-            </div>
-        </div>
-    </div>
-</div>
-<br/>
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Recently Added</h1>
-</div>
-
-<div class="container">
-    <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 box-shadow">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Movie 1</h4>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Desc1</li>
-                </ul>
-                <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
-            </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Movie2</h4>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Desc 2</li>
-                </ul>
-                <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
-            </div>
-        </div>
-        <div class="card mb-4 box-shadow">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Movie3</h4>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>Desc 3</li>
                 </ul>
                 <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
             </div>

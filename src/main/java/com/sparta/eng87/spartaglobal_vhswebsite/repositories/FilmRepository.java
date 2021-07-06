@@ -43,4 +43,10 @@ public interface FilmRepository extends JpaRepository<FilmEntity, Integer> {
 
     @Query(value = "select * From film where film_id=?",nativeQuery = true)
     FilmEntity getFilmByID(int ID);
+
+    @Query(value="SELECT * FROM film ORDER BY last_update", nativeQuery = true)
+    List<FilmEntity> getRecentlyUpdated();
+
+
 }
+

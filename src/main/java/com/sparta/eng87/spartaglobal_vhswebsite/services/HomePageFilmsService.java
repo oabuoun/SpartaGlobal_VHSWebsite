@@ -61,6 +61,26 @@ public class HomePageFilmsService {
     public  List<RentalEntity> getRentalEntitiesByInventoryId(int inventoryId){
         return rentals.getRentalEntitiesByInventoryId(inventoryId);
     }
+    public List<InventoryEntity> getInventoryByFilmID(int id){
+        return inventory.getInventoryEntitiesByFilmId(id);
+    }
+    public List<FilmEntity> getRecentlyUpdated(){
+        List<FilmEntity> recentlyAdded=new ArrayList<>();
+        List<FilmEntity> filmsByLastUpdated= films.getRecentlyUpdated();
+        int i=0;
+        while (recentlyAdded.size()<3){
+            List<InventoryEntity> filmsInventory = getInventoryByFilmID(filmsByLastUpdated.get(i).getFilmId());
+            for (InventoryEntity inventory:
+                    filmsInventory) {
+                if (getRentalEntitiesByInventoryId(inventory.getInventoryId()).get(0).getReturnDate()!=null){
+                    recentlyAdded.add(filmsByLastUpdated.get(i));
+                    break;
+                }
+            }
+            i++;
+        }
+        return recentlyAdded;
+    }
 
 
 }
