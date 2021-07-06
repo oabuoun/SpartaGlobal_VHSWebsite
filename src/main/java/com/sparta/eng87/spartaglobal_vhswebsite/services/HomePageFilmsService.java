@@ -68,7 +68,7 @@ public class HomePageFilmsService {
         List<FilmEntity> recentlyAdded=new ArrayList<>();
         List<FilmEntity> filmsByLastUpdated= films.getRecentlyUpdated();
         int i=0;
-        while (recentlyAdded.size()<3){
+        while (recentlyAdded.size()<4){
             List<InventoryEntity> filmsInventory = getInventoryByFilmID(filmsByLastUpdated.get(i).getFilmId());
             for (InventoryEntity inventory:
                     filmsInventory) {
@@ -81,6 +81,4 @@ public class HomePageFilmsService {
         }
         return recentlyAdded;
     }
-
-
 }

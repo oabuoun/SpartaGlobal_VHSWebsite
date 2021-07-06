@@ -23,7 +23,8 @@ public class FilmService {
     public FilmService(FilmRepository filmRepository) {
         this.filmRepository = filmRepository;
     }
-    private static AdvancedSearchTerms search;
+
+    private AdvancedSearchTerms search = new AdvancedSearchTerms();
 
     public List<FilmEntity> findFilmsByTitle(String title) {
 //        ExampleMatcher matcher = ExampleMatcher.matchingAny().withMatcher("title", contains());

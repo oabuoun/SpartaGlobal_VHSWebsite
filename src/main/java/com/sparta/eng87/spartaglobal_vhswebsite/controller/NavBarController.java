@@ -39,18 +39,16 @@ public class NavBarController {
 
         switch(box) {
             case "title":
-                model.addAttribute("search", filmService.findFilmsByTitle(search));
+                model.addAttribute("films", filmService.findFilmsByTitle(search));
                 break;
             case "actor":
-                model.addAttribute("search", filmService.findFilmsByActor(search));
+                model.addAttribute("films", filmService.findFilmsByActor(search));
                 break;
             case "genre":
-                model.addAttribute("search", filmService.findFilmsByGenre(search));
+                model.addAttribute("films", filmService.findFilmsByGenre(search));
                 break;
         }
 
-        return "results";
+        return "resultsPage";
     }
-
-
 }
