@@ -30,4 +30,14 @@ public interface FilmRepository extends JpaRepository<FilmEntity, Integer> {
             "INNER JOIN category c ON fc.category_id = c.category_id" +
             "WHERE c.name = ?", nativeQuery = true)
     List<FilmEntity> findFilmsFromGenre (String genre);
+
+    @Query(value = "SELECT f.* FROM film f " +
+            "INNER JOIN film_actor fa ON f.film_id = fa.film_id" +
+            "INNER JOIN actor a ON fa.actor_id = a.actor_id" +
+            "INNER JOIN film_category fc ON f.film_id = fc.film_id" +
+            "INNER JOIN category c ON fc.category_id = c.category_id" +
+            "WHERE (a.first_name LIKE %?1% OR a.last_name LIKE %?2%)" +
+            "AND f.title LIKE %?2%" +
+            "AND c.name LIKE %?3%", nativeQuery = true)
+    List<FilmEntity> findFilmsFromFilter (String firstName, String lastName, String title, String genre);
 }
