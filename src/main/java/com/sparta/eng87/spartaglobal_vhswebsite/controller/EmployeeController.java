@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class EmployeeController {
 
-    //  add in the other functions a employee will have
+    // TODO add in the other functions a employee will have
 
 
     private FilmService filmService;
@@ -20,13 +20,13 @@ public class EmployeeController {
         this.customerService =customerService;
     }
 
-    @PostMapping("/addVHS")
+    @PostMapping("/addFilm")
     public void addVHS(){
         FilmEntity filmEntity = new FilmEntity;
         filmService.save(filmEntity);
     }
 
-    @PostMapping("/addcustomer")
+    @PostMapping("/addCustomer")
     public void addCustomer(){
         CustomerEntity customerEntity = new CustomerEntity;
         customerService.save(customerEntity);
