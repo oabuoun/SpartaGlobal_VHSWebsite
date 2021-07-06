@@ -31,7 +31,7 @@ public class HomePageFilmsService {
     public List<FilmEntity> getMostRecentReturns(){
         List<RentalEntity> rentalsByReturnDate = rentals.getLatestReturns();
         List<FilmEntity> films = new ArrayList<>();
-        List<InventoryEntity> returnedInventory = new ArrayList<>();
+
         List<Integer> filmsAlreadySelected = new ArrayList<>();
         int i=0;
         do {
