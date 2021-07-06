@@ -1,5 +1,9 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.controller;
 
+import com.sparta.eng87.spartaglobal_vhswebsite.entities.CustomerEntity;
+import com.sparta.eng87.spartaglobal_vhswebsite.entities.FilmEntity;
+import com.sparta.eng87.spartaglobal_vhswebsite.services.CustomerService;
+import com.sparta.eng87.spartaglobal_vhswebsite.services.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

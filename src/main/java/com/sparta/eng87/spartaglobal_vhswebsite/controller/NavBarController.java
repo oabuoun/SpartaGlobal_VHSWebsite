@@ -1,5 +1,5 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.controller;
-
+import com.sparta.eng87.spartaglobal_vhswebsite.services.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,22 +30,22 @@ public class NavBarController {
     }
 
     @GetMapping("/about")
-    public String navBarLogin(){
+    public String navBarAbout(){
         return"about";
     }
 
     @PostMapping("/search")
-    public String navBarSearch(@RequestParam(name = "search") String title, @RequestParam(name = "searchBy") String box,Model model ){
+    public String navBarSearch(@RequestParam(name = "search") String search, @RequestParam(name = "searchBy") String box,Model model ){
 
         switch(box) {
             case "title":
-                model.addAttribute("search", filmService.findByTitle);
+                model.addAttribute("search", filmService.findFilmsByTitle(search));
                 break;
             case "actor":
-                model.addAttribute("search", filmService.findByActor);
+                model.addAttribute("search", filmService.findFilmsByActor(search));
                 break;
             case "genre":
-                model.addAttribute("search", filmService.findByGenre);
+                model.addAttribute("search", filmService.findFilmsByGenre(search));
                 break;
         }
 
