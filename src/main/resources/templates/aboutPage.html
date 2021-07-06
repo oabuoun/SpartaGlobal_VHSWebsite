@@ -2,9 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
 </head>
 <body>
+<nav th:replace="fragments/header.html :: navbar"></nav>
+<div class="container text-center">
+    <h1>About Us</h1>
+    <h3>Our Story</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis mattis elit non d
+        apibus. Mauris malesuada quam eget ligula tristique interdum. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Pellentesque condimentum posuere metus, a blandit ipsum.
+        Phasellus vulputate, ipsum vel sagittis scelerisque, </p>
+    <br>
+    <h3>Our Stores</h3>
+    <div class="row mb-2">
+    <div class="col-md-6">
+        <div>
+            <div class="card " style="top: 18px">
+                <div class="text-xs-center header">Find Us Here</div>
+                <div class="card-block text-xs-center">
+                    <h4>Address</h4>
+                    <div>
+                        Somewhere<br />
+                        Somewhere<br />
+                        #(+44) 1234 1234<br />
+                        something@company.com<br />
+                    </div>
+                    <hr />
+                    <div id="map1" class="map">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="col-md-6">
+        <div>
+            <div class="card " style="top: 18px">
+                <div class="text-xs-center header">Find Us Here</div>
+                <div class="card-block text-xs-center">
+                    <h4>Address</h4>
+                    <div>
+                        Somewhere<br />
+                        Somewhere<br />
+                        #(+44) 1234 1234<br />
+                        something@company.com<br />
+                    </div>
+                    <hr />
+                    <div id="map2" class="map">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    <br>
+</div>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        function init_map1() {
+            var myLocation = new google.maps.LatLng(38.885516, -77.09327200000001);
+            var mapOptions = {
+                center: myLocation,
+                zoom: 16
+            };
+            var marker = new google.maps.Marker({
+                position: myLocation,
+                title: "Property Location"
+            });
+            var map = new google.maps.Map(document.getElementById("map1"),
+                mapOptions);
+            marker.setMap(map);
+        }
+        init_map1();
+    });
+</script>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        function init_map2() {
+            var myLocation = new google.maps.LatLng(38.885516, -77.09327200000001);
+            var mapOptions = {
+                center: myLocation,
+                zoom: 16
+            };
+            var marker = new google.maps.Marker({
+                position: myLocation,
+                title: "Property Location"
+            });
+            var map = new google.maps.Map(document.getElementById("map2"),
+                mapOptions);
+            marker.setMap(map);
+        }
+        init_map2();
+    });
+</script>
+
+<footer>
+    <nav th:replace="fragments/footer.html :: navbar"></nav>
+</footer>
 </body>
 </html>
