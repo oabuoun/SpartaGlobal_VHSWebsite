@@ -1,5 +1,6 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.controller;
 import com.sparta.eng87.spartaglobal_vhswebsite.services.FilmService;
+import com.sparta.eng87.spartaglobal_vhswebsite.services.HomePageFilmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,19 +11,22 @@ public class HomeController {
 
 
     private FilmService filmService;
+    private HomePageFilmsService homePageFilmsService;
 
     @Autowired
-    public HomeController(FilmService filmService){
+    public HomeController(FilmService filmService, HomePageFilmsService homePageFilmsService){
         this.filmService=filmService;
+        this.homePageFilmsService = homePageFilmsService;
     }
 
 
    @GetMapping("/")
     public String getVHSForDisplay(Model model){
 
-        model.addAttribute("popularVHS", filmService.findPopular);
-        model.addAttribute("returnedVHS",filmService.findReturned);
-       model.addAttribute("recentVHS",filmService.findByRecent);
+         model.addAttribute("recentVHS", homePageFilmsService.getMostRecentReturns());
+      //  model.addAttribute("returnedVHS",filmService.findReturned);
+       // TODO add correct method name
+      //  model.addAttribute("recentVHS",filmService.findByRecent);
 
         return "index";
 

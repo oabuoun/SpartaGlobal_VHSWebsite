@@ -33,22 +33,17 @@ public class HomePageFilmsService {
         List<FilmEntity> films = new ArrayList<>();
         List<InventoryEntity> returnedInventory = new ArrayList<>();
         List<Integer> filmsAlreadySelected = new ArrayList<>();
-        for (RentalEntity rent:
-             rentalsByReturnDate) {
-            returnedInventory.add(getInventoryEntitiesByInventoryId(rent.getInventoryId()));
-        }
         int i=0;
-        while (films.size()<4){
-            if(i<returnedInventory.size()){
-                if(filmsAlreadySelected.contains(returnedInventory.get(i).getFilmId())!=true){
-                    filmsAlreadySelected.add(returnedInventory.get(i).getFilmId());
-                    if(getRentalEntitiesByInventoryId(returnedInventory.get(i).getInventoryId()).get(0).getReturnDate()!=null) {
-                        films.add(findFilmByID(returnedInventory.get(i).getFilmId()));
-                    }
+        do {
+            InventoryEntity inventoryEntity = getInventoryEntitiesByInventoryId(rentalsByReturnDate.get(i).getInventoryId());
+                if(filmsAlreadySelected.contains(inventoryEntity.getFilmId())!=true){
+                    filmsAlreadySelected.add(inventoryEntity.getFilmId());
+                if(getRentalEntitiesByInventoryId(inventoryEntity.getInventoryId()).get(0).getReturnDate()!=null) {
+                                        films.add(findFilmByID(inventoryEntity.getFilmId()));
+                                    }
                 }
-            }
-            i++;
-        }
+                i++;
+        }while(films.size()<3);
         return films;
     }
 

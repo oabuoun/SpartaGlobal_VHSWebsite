@@ -8,20 +8,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class UserController {
+public class CustomerController {
 
     private FilmService filmService;
 
     @Autowired
-    public UserController(FilmService filmService){
+    public CustomerController(FilmService filmService){
         this.filmService=filmService;
     }
 
     @GetMapping("/user/{id}")
     public String userPage(@PathVariable("id") Integer id, Model model)
     {
-        model.addAttribute("currentlyRented", filmService.findCurrenltyRented);
-        model.addAttribute("previouslyRented", filmService.findpreviouslyRented);
+        // TODO add correct method signature
+        //model.addAttribute("currentlyRented", filmService.findCurrenltyRented(id));
+      /*  model.addAttribute("previouslyRented", filmService.findpreviouslyRented(id));  low priority */
         return "user";
     }
 

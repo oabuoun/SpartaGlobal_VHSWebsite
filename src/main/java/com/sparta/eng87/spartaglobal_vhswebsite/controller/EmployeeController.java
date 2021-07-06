@@ -25,14 +25,12 @@ public class EmployeeController {
     }
 
     @PostMapping("/addFilm")
-    public void addVHS(){
-        FilmEntity filmEntity = new FilmEntity;
+    public void addVHS(FilmEntity filmEntity, Model model){
         filmService.save(filmEntity);
     }
 
     @PostMapping("/addCustomer")
-    public void addCustomer(){
-        CustomerEntity customerEntity = new CustomerEntity;
+    public void addCustomer(CustomerEntity customerEntity, Model model){
         customerService.save(customerEntity);
     }
 

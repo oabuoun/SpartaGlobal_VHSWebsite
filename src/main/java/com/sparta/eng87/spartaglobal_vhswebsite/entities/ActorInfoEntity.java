@@ -1,9 +1,6 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "actor_info", schema = "sakila", catalog = "")
@@ -13,7 +10,7 @@ public class ActorInfoEntity {
     private String lastName;
     private String filmInfo;
 
-    @Basic
+    @Id
     @Column(name = "actor_id")
     public Integer getActorId() {
         return actorId;

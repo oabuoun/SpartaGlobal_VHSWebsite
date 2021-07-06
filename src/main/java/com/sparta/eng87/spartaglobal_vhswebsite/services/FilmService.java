@@ -1,6 +1,7 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.services;
 
 import com.sparta.eng87.spartaglobal_vhswebsite.POJO.AdvancedSearchTerms;
+import com.sparta.eng87.spartaglobal_vhswebsite.entities.CustomerEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.FilmEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.repositories.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,15 @@ public class FilmService {
     }
     private static AdvancedSearchTerms search;
 
-    public void findFilmsByTitle(String title) {
+    public List<FilmEntity> findFilmsByTitle(String title) {
 //        ExampleMatcher matcher = ExampleMatcher.matchingAny().withMatcher("title", contains());
 //        FilmEntity filmEntity = FilmEntity.builder().title(title).build();
 //        return filmRepository.findAll(Example.of(filmEntity, matcher));
         search.setTitle(title);
-        filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
+        return filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
     }
 
-    public void findFilmsByActor(String actor) {
+    public List<FilmEntity> findFilmsByActor(String actor) {
         if (actor.trim().contains(" ")) {
             String[] names = actor.trim().split(" ");
             search.setFirstName(names[0]);
@@ -41,18 +42,27 @@ public class FilmService {
             search.setLastName(actor);
             search.setLastName(actor);
         }
-        filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
+        return filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
     }
 
-    public void findFilmsByGenre(String genre) {
+    public List<FilmEntity> findFilmsByGenre(String genre) {
 //        FilmEntity filmEntity = FilmEntity.builder().
 //        filmRepository.findAll(Example.of());
 //        //return filmRepository.findFilmsFromGenre(genre.trim());
         search.setGenre(genre);
-        filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
+       return filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
     }
 
     public List<FilmEntity> filter(String firstName, String lastName, String title, String genre){
         return filmRepository.findFilmsFromFilter(firstName, lastName, title, genre);
     }
+
+    public void save(FilmEntity filmEntity){
+        filmRepository.save(filmEntity);
+    }
+
+//    public List<FilmEntity> getMostRecentReturns(){
+//
+//        return FilmRepository.findByMostRecentReturns();
+//    }
 }

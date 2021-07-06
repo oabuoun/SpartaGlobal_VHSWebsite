@@ -1,6 +1,7 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.services;
 
 
+import com.sparta.eng87.spartaglobal_vhswebsite.entities.CustomerEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,5 +16,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public
+    public void save(CustomerEntity customerEntity){
+        customerRepository.save(customerEntity);
+    }
 }
