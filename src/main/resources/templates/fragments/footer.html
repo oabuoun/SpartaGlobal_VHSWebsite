@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-custom" th:fragment="navbar">
+
+  <img th:src="@{images/wordart.png}" th:width="122px" th:height="50px">
+
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav mr-auto mt-auto">
+      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+    </ul>
+    <ul class="navbar-nav ml-auto mt-auto">
+      <li>
+      </li>
+    </ul>
+  </div>
+</nav>
+</body>
+</html>
