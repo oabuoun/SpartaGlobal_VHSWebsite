@@ -1,0 +1,58 @@
+.navbarSearch {
+    height: 30px;
+    border-right: none;
+}
+
+.navbar-custom {
+    background-color: black;
+}
+
+.nav-link{
+    color: yellow;
+}
+.search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    /*color: #55595c;*/
+    background-color: yellow;
+    border: 1px solid #ccc;
+    height: calc(2rem + 2px) !important;
+    border-radius:0;
+    font-weight: bold;
+}
+.wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    text-transform: capitalize;
+    height: calc(2rem + 2px) !important;
+    border-radius:0;
+    font-weight: bold !important;
+}
+@media (min-width: 992px){
+    .search-sec{
+        position: relative;
+    }
+}
+
+.container {
+    max-width: 960px;
+}
+
+.pricing-header {
+    max-width: 700px;
+}
+
+.card-deck .card {
+    min-width: 220px;
+
+}
+.card-header{
+    background-color:yellow !important;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05) ;}
