@@ -1,9 +1,12 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.entities;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+@Builder
 @Entity
 @Table(name = "film", schema = "sakila", catalog = "")
 public class FilmEntity {
