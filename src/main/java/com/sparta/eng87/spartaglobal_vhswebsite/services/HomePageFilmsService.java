@@ -94,9 +94,8 @@ public class HomePageFilmsService {
                     results.add(film);
                    break;
                }
-
           }
-            if(results.size()>=3){
+            if(results.size()>=9){
                 break;
             }
         }
