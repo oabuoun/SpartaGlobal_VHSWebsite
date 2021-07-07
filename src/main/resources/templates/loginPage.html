@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+<nav th:replace="fragments/header.html :: navbar"></nav>
 
+
+<br>
+
+<div th:if="${param.error}">
+    Invalid Credentials
+</div>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <form th:action="@{/login}" method="post">
+            <br>
+            <input type="text" id="login" class="fadeIn second loginForm" name="username" placeholder="login">
+            <input type="text" id="password" class="fadein third loginForm" name="password" placeholder="password">
+            <input type="submit" class="fadein yellow-button" value="log in">
+        </form>
+<!--        <div id="formfooter" class="signup-link">-->
+<!--            <a class="underlinehover" href="#">Signup Here!</a>-->
+<!--            <br>-->
+<!--        </div>-->
+
+    </div>
+</div>
+
+
+<footer>
+    <nav th:replace="fragments/footer.html :: navbar"></nav>
+</footer>
 </body>
 </html>

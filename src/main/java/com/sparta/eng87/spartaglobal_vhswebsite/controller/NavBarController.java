@@ -21,17 +21,17 @@ public class NavBarController {
 
     @GetMapping("/home")
     public String navBarHome(){
-        return "/";
+        return "index";
     }
 
     @GetMapping("/login")
     public String navBarLogin(){
-        return"login";
+        return"loginPage";
     }
 
     @GetMapping("/about")
     public String navBarAbout(){
-        return"about";
+        return"aboutPage";
     }
 
     @PostMapping("/search")

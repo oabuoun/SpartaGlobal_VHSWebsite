@@ -7,6 +7,7 @@ import com.sparta.eng87.spartaglobal_vhswebsite.services.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -22,6 +23,11 @@ public class EmployeeController {
     public EmployeeController(FilmService filmService, CustomerService customerService){
         this.filmService=filmService;
         this.customerService =customerService;
+    }
+
+    @GetMapping("/employee")
+    public String gotoEmployeePage(){
+        return "employeePage";
     }
 
     @PostMapping("/addFilm")
