@@ -323,3 +323,10 @@ input[type=text]::placeholder {
     margin-right: -175px;
 
 }
+
+.about {
+    margin-right: 15%;
+    margin-left: 15%;
+    min-width: 600px;
+    text-align: center;
+}

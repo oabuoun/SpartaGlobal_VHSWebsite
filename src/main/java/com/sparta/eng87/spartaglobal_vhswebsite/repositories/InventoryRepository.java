@@ -17,6 +17,6 @@ public interface InventoryRepository extends JpaRepository<InventoryEntity,Integ
     @Query(value="SELECT * FROM inventory WHERE film_id=?", nativeQuery = true)
     List<InventoryEntity> getInventoryEntitiesByFilmId(int id);
 
-    @Query(value="SELECT inventory_id FROM inventory WHERE film_id =?")
+    @Query(value="SELECT inventory_id FROM inventory WHERE film_id =?", nativeQuery = true)
     Integer getInventoryIdByFilmId(int id);
 }
