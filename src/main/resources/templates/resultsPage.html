@@ -14,10 +14,11 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Results</h1>
 </div>
-<form method="post" action="#">
+
     <div class="container">
         <div class="card-deck mb-3 text-center">
-            <div th:each="film : ${films}" class="card mb-4 box-shadow">
+            <div th:each=" film,iterStat : ${films}" class="card mb-4 box-shadow">
+                <form method="post" th:action="@{/rent}">
                 <div class="card-header">
                     <h4 th:text="${film.title}" class="my-0 font-weight-normal">Movie 1</h4>
                 </div>
@@ -27,12 +28,17 @@
                     </ul>
 <!--                    <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>-->
                     <label>Rent</label>
-                    <input type="checkbox" th:id="${film.filmId}" name="basket" th:value="${film.filmId}">
+                    <span th:if="${inStock[iterStat.index]}">
+                    <button type="button" th:id="${film.filmId}" name="rent" >Rent</button>
+                    </span>
+                    <span th:unless="${inStock[iterStat.index]}">
+                        <label>Sorry Not In Stock</label>
+                    </span>
                 </div>
+                </form>
             </div>
         </div>
-        <input type="submit" value="Rent Selection">
+<!--        <input type="submit" value="Rent Selection">-->
     </div>
-</form>
 </body>
 </html>

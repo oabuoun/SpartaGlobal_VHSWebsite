@@ -14,6 +14,28 @@ public class RentalEntity {
     private Integer staffId;
     private Timestamp lastUpdate;
 
+    public RentalEntity(Timestamp rentalDate, Integer inventoryId, Integer customerId, Timestamp returnDate, Integer staffId, Timestamp lastUpdate) {
+        this.rentalDate = rentalDate;
+        this.inventoryId = inventoryId;
+        this.customerId = customerId;
+        this.returnDate = returnDate;
+        this.staffId = staffId;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public RentalEntity(Integer rentalId, Timestamp rentalDate, Integer inventoryId, Integer customerId, Timestamp returnDate, Integer staffId, Timestamp lastUpdate) {
+        this.rentalId = rentalId;
+        this.rentalDate = rentalDate;
+        this.inventoryId = inventoryId;
+        this.customerId = customerId;
+        this.returnDate = returnDate;
+        this.staffId = staffId;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public RentalEntity() {
+    }
+
     @Id
     @Column(name = "rental_id")
     public Integer getRentalId() {
