@@ -26,12 +26,12 @@ public class NavBarController {
 
     @GetMapping("/login")
     public String navBarLogin(){
-        return"login";
+        return"loginPage";
     }
 
     @GetMapping("/about")
     public String navBarAbout(){
-        return"about";
+        return"aboutPage";
     }
 
     @PostMapping("/search")
