@@ -2,7 +2,6 @@ package com.sparta.eng87.spartaglobal_vhswebsite.services;
 
 
 
-import com.sparta.eng87.spartaglobal_vhswebsite.POJO.PopularFilm;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.FilmEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.InventoryEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.RentalEntity;
@@ -46,7 +45,7 @@ public class HomePageFilmsService {
                                     }
                 }
                 i++;
-        }while(films.size()<3);
+        }while(films.size()<9);
         return films;
     }
 
@@ -69,7 +68,7 @@ public class HomePageFilmsService {
         List<FilmEntity> recentlyAdded=new ArrayList<>();
         List<FilmEntity> filmsByLastUpdated= films.getRecentlyUpdated();
         int i=0;
-        while (recentlyAdded.size()<4){
+        while (recentlyAdded.size()<9){
             List<InventoryEntity> filmsInventory = getInventoryByFilmID(filmsByLastUpdated.get(i).getFilmId());
             for (InventoryEntity inventory:
                     filmsInventory) {
@@ -81,25 +80,5 @@ public class HomePageFilmsService {
             i++;
         }
         return recentlyAdded;
-    }
-    public List<Object[]> getMostPopular(){
-        List<Object[]> mostPopularFilms= rentals.getMostPopularRentals();
-        List<Object[]> results= new ArrayList<>();
-        for (Object[] film:
-                mostPopularFilms) {
-            List<InventoryEntity> inventoryForFilm= inventory.getInventoryEntitiesByFilmId(Short.toUnsignedInt((Short) film[0]));
-          for (InventoryEntity inventoryEntity:
-                   inventoryForFilm) {
-               if (getRentalEntitiesByInventoryId(inventoryEntity.getInventoryId()).get(0).getReturnDate()!=null){
-                    results.add(film);
-                   break;
-               }
-
-          }
-            if(results.size()>=3){
-                break;
-            }
-        }
-        return results;
     }
 }
