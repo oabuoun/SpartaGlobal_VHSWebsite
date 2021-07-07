@@ -14,6 +14,26 @@
 
 <br>
 
+<div th:if="${param.error}">
+    Invalid Credentials
+</div>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <form th:action="@{/login}" method="post">
+            <br>
+            <input type="text" id="login" class="fadeIn second loginForm" name="username" placeholder="login">
+            <input type="text" id="password" class="fadein third loginForm" name="password" placeholder="password">
+            <input type="submit" class="fadein yellow-button" value="log in">
+        </form>
+        <div id="formfooter" class="signup-link">
+            <a class="underlinehover" href="#">Signup Here!</a>
+            <br>
+        </div>
+
+    </div>
+</div>
+
 <footer>
     <nav th:replace="fragments/footer.html :: navbar"></nav>
 </footer>
