@@ -11,7 +11,7 @@ public interface RentalRepository extends JpaRepository<RentalEntity, Integer>{
     @Query(value = "SELECT * FROM rental r ORDER BY r.return_date DESC", nativeQuery = true)
     List<RentalEntity> getLatestReturns();
 
-    @Query(value = "SELECT * FROM rental WHERE inventory_id=?", nativeQuery = true)
+    @Query(value = "SELECT * FROM rental WHERE inventory_id=? ORDER BY return_date", nativeQuery = true)
     List<RentalEntity> getRentalEntitiesByInventoryId(int inventoryId);
 
 

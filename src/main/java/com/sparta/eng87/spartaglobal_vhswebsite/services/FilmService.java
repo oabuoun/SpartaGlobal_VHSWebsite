@@ -62,6 +62,10 @@ public class FilmService {
         filmRepository.save(filmEntity);
     }
 
+    public FilmEntity findFilmByID(int id){
+        return filmRepository.getFilmByID(id);
+    }
+
 //    public List<FilmEntity> getMostRecentReturns(){
 //
 //        return FilmRepository.findByMostRecentReturns();

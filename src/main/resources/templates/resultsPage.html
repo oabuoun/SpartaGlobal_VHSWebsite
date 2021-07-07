@@ -18,7 +18,7 @@
     <div class="container">
         <div class="card-deck mb-3 text-center">
             <div th:each=" film,iterStat : ${films}" class="card mb-4 box-shadow">
-                <form method="post" th:action="@{/rent}">
+                <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">
                 <div class="card-header">
                     <h4 th:text="${film.title}" class="my-0 font-weight-normal">Movie 1</h4>
                 </div>
@@ -27,9 +27,9 @@
                         <li th:text="${film.description}">Desc1</li>
                     </ul>
 <!--                    <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>-->
-                    <label>Rent</label>
+
                     <span th:if="${inStock[iterStat.index]}">
-                    <button type="button" th:id="${film.filmId}" name="rent" >Rent</button>
+                    <button type="submit" th:id="${film.filmId}" name="rent" >Rent</button>
                     </span>
                     <span th:unless="${inStock[iterStat.index]}">
                         <label>Sorry Not In Stock</label>

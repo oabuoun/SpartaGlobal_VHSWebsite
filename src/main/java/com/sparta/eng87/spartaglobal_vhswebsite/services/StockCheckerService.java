@@ -31,11 +31,24 @@ public class StockCheckerService {
                             inStock.add(true);
                             break;
                         }
-                        if(inventory.equals(filmsInventory.get(filmsInventory.size()))){
+                        if(inventory.equals(filmsInventory.get(filmsInventory.size()-1))){
                             inStock.add(false);
                         }
                     }
          }
       return inStock;
+    }
+
+    public Integer getStock(List<FilmEntity> films){
+        for( FilmEntity film :  films){
+            List<InventoryEntity> filmsInventory = homePageFilmsService.getInventoryByFilmID(film.getFilmId());
+            for (InventoryEntity inventory:
+                    filmsInventory) {
+                if (homePageFilmsService.getRentalEntitiesByInventoryId(inventory.getInventoryId()).get(0).getReturnDate()!=null){
+                    return inventory.getInventoryId();
+                }
+            }
+        }
+        return 0;
     }
 }
