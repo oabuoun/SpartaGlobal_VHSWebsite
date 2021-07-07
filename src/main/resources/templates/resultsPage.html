@@ -15,33 +15,30 @@
     <h1 class="display-4">Results</h1>
 </div>
 
-<section class="search-sec">
+<section class="filter">
     <div class="container">
-            <form th:action="@{/filteredSearch}" method="post" novalidate="novalidate" align="center">
-        <div class="row">
-
-                <div class="col-lg-10 col-md-10 col-sm-10">
+        <form th:action="@{/filteredSearch}" method="post" novalidate="novalidate">
             <div class="row">
-
-                <div class="col-lg-10 col-md-10 col-sm-10  ">
-                    <input type="text" class="form-control search-slt" name="filterSearch" placeholder="Enter data..." size="60">
-                </div>
-                <div class="col-lg-10 col-md-10 col-sm-10 ">
-                    <select class="form-control search-slt" name="filterSearchBy" id="exampleFormControlSelect1">
-                        <option value="title">Title</option>
-                        <option value="genre">Genre</option>
-                        <option value="actor">Actor</option>
-                    </select>
-                </div>
-                <div class="col-lg-10 col-md-10 col-sm-10 ">
-                    <button type="submit" class="btn btn-warning wrn-btn" value="submit" >Search</button>
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control search-slt" name="filterSearch" placeholder="Enter data..." size="60">
+                    </div>
+                    <div class="col">
+                        <select class="form-control search-slt" name="filterSearchBy" id="exampleFormControlSelect1">
+                            <option value="title">Title</option>
+                            <option value="genre">Genre</option>
+                            <option value="actor">Actor</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-warning wrn-btn" value="submit" >Search</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-            </form>
-</div>
 </section>
+
 <br/>
 <br/>
 <form method="post" action="#">
