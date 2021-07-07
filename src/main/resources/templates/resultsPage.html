@@ -14,6 +14,33 @@
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Results</h1>
 </div>
+
+<section class="filter">
+    <div class="container">
+        <form th:action="@{/filteredSearch}" method="post" novalidate="novalidate">
+            <div class="row">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" class="form-control search-slt" name="filterSearch" placeholder="Enter data..." size="60">
+                    </div>
+                    <div class="col">
+                        <select class="form-control search-slt" name="filterSearchBy" id="exampleFormControlSelect1">
+                            <option value="title">Title</option>
+                            <option value="genre">Genre</option>
+                            <option value="actor">Actor</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-warning wrn-btn" value="submit" >Search</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<br/>
+<br/>
 <form method="post" action="#">
     <div class="container">
         <div class="card-deck mb-3 text-center">
@@ -25,7 +52,6 @@
                     <ul class="list-unstyled mt-3 mb-4">
                         <li th:text="${film.description}">Desc1</li>
                     </ul>
-<!--                    <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>-->
                     <label>Rent</label>
                     <input type="checkbox" th:id="${film.filmId}" name="basket" th:value="${film.filmId}">
                 </div>

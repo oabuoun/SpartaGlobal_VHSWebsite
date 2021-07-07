@@ -45,7 +45,7 @@ public class HomePageFilmsService {
                                     }
                 }
                 i++;
-        }while(films.size()<3);
+        }while(films.size()<9);
         return films;
     }
 
@@ -68,7 +68,7 @@ public class HomePageFilmsService {
         List<FilmEntity> recentlyAdded=new ArrayList<>();
         List<FilmEntity> filmsByLastUpdated= films.getRecentlyUpdated();
         int i=0;
-        while (recentlyAdded.size()<4){
+        while (recentlyAdded.size()<9){
             List<InventoryEntity> filmsInventory = getInventoryByFilmID(filmsByLastUpdated.get(i).getFilmId());
             for (InventoryEntity inventory:
                     filmsInventory) {

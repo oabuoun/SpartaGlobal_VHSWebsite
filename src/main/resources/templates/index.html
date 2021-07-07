@@ -20,33 +20,33 @@
     <div class="card-deck mb-3 text-center">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
-                <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[0].title}">Movie 1</h4>
+                <h4 class="my-0 font-weight-normal" th:text="${popularVHS[0][1]}">Movie 1</h4>
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <li th:text="${returnedVHS[0].description}">Desc1</li>
+                    <li th:text="${popularVHS[0][2]}">Desc1</li>
                 </ul>
                 <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
             </div>
         </div>
         <div class="card mb-4 box-shadow">
             <div class="card-header">
-                <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[1].title}">Movie2</h4>
+                <h4 class="my-0 font-weight-normal" th:text="${popularVHS[1][1]}">Movie2</h4>
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <li th:text="${returnedVHS[1].description}">Desc 2</li>
+                    <li th:text="${popularVHS[1][2]}">Desc 2</li>
                 </ul>
                 <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
             </div>
         </div>
         <div class="card mb-4 box-shadow">
             <div class="card-header">
-                <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[2].title}">Movie3</h4>
+                <h4 class="my-0 font-weight-normal" th:text="${popularVHS[2][1]}">Movie3</h4>
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <li th:text="${returnedVHS[2].description}">Desc 3</li>
+                    <li th:text="${popularVHS[2][2]}">Desc 3</li>
                 </ul>
                 <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
             </div>
@@ -104,11 +104,11 @@
     <div class="card-deck mb-3 text-center">
         <div class="card mb-4 box-shadow">
             <div class="card-header">
-                <h4 class="my-0 font-weight-normal" th:text="${recentVHS[0].title}">Movie 1</h4>
+                <h4 class="my-0 font-weight-normal"  th:text="${recentVHS[0].title}">Movie 1</h4>
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <li>Desc1</li>
+                    <li  th:text="${recentVHS[0].description}" > Desc1</li>
                 </ul>
                 <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
             </div>
@@ -119,7 +119,7 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <li>Desc 2</li>
+                    <li th:text="${recentVHS[1].description}">Desc 2</li>
                 </ul>
                 <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
             </div>
@@ -130,7 +130,7 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mt-3 mb-4">
-                    <li>Desc 3</li>
+                    <li th:text="${recentVHS[2].description}">Desc 3</li>
                 </ul>
                 <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>
             </div>
