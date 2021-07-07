@@ -27,9 +27,6 @@ public class FilmService {
     private AdvancedSearchTerms search = new AdvancedSearchTerms();
 
     public List<FilmEntity> findFilmsByTitle(String title) {
-//        ExampleMatcher matcher = ExampleMatcher.matchingAny().withMatcher("title", contains());
-//        FilmEntity filmEntity = FilmEntity.builder().title(title).build();
-//        return filmRepository.findAll(Example.of(filmEntity, matcher));
         search.setTitle(title);
         search.setFirstName("");
         search.setLastName("");
@@ -52,9 +49,6 @@ public class FilmService {
     }
 
     public List<FilmEntity> findFilmsByGenre(String genre) {
-//        FilmEntity filmEntity = FilmEntity.builder().
-//        filmRepository.findAll(Example.of());
-//        //return filmRepository.findFilmsFromGenre(genre.trim());
         search.setGenre(genre);
         search.setFirstName("");
         search.setLastName("");
@@ -69,6 +63,7 @@ public class FilmService {
     public void save(FilmEntity filmEntity){
         filmRepository.save(filmEntity);
     }
+
 
     public List<FilmEntity> filterFilmsByTitle(String title) {
         search.setTitle(title);
@@ -88,12 +83,9 @@ public class FilmService {
     }
 
     public List<FilmEntity> filterFilmsByGenre(String genre) {
-            search.setGenre(genre);
+        search.setGenre(genre);
         return filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
+
     }
 
-//    public List<FilmEntity> getMostRecentReturns(){
-//
-//        return FilmRepository.findByMostRecentReturns();
-//    }
 }

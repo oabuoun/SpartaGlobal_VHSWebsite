@@ -1,5 +1,6 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.controller;
 import com.sparta.eng87.spartaglobal_vhswebsite.services.FilmService;
+import com.sparta.eng87.spartaglobal_vhswebsite.services.StockCheckerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,12 @@ public class SearchController {
 
 
     private FilmService filmService;
+    private StockCheckerService stockCheckerService;
 
     @Autowired
-    public SearchController(FilmService filmService){
+    public SearchController(FilmService filmService, StockCheckerService stockCheckerService){
         this.filmService=filmService;
+        this.stockCheckerService=stockCheckerService;
     }
 
 
@@ -43,9 +46,10 @@ public class SearchController {
         }
 
         // TODO check the ordering of the inputs
+        model.addAttribute("inStock",stockCheckerService.isInStock(filmService.filter(genre,language,actor,title)));
         model.addAttribute("filteredResults", filmService.filter(genre,language,actor,title));
 
-        return "resuts";
+        return "resultsPage";
 
 
     }

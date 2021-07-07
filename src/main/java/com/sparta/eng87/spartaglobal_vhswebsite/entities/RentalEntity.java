@@ -2,8 +2,10 @@ package com.sparta.eng87.spartaglobal_vhswebsite.entities;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import javax.persistence.TableGenerator;
 
 @Entity
+@SequenceGenerator(name="seq", initialValue=16049)
 @Table(name = "rental", schema = "sakila", catalog = "")
 public class RentalEntity {
     private Integer rentalId;
@@ -14,8 +16,31 @@ public class RentalEntity {
     private Integer staffId;
     private Timestamp lastUpdate;
 
+    public RentalEntity(Timestamp rentalDate, Integer inventoryId, Integer customerId, Timestamp returnDate, Integer staffId, Timestamp lastUpdate) {
+        this.rentalDate = rentalDate;
+        this.inventoryId = inventoryId;
+        this.customerId = customerId;
+        this.returnDate = returnDate;
+        this.staffId = staffId;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public RentalEntity(Integer rentalId, Timestamp rentalDate, Integer inventoryId, Integer customerId, Timestamp returnDate, Integer staffId, Timestamp lastUpdate) {
+        this.rentalId = rentalId;
+        this.rentalDate = rentalDate;
+        this.inventoryId = inventoryId;
+        this.customerId = customerId;
+        this.returnDate = returnDate;
+        this.staffId = staffId;
+        this.lastUpdate = lastUpdate;
+    }
+
+    public RentalEntity() {
+    }
+
     @Id
     @Column(name = "rental_id")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     public Integer getRentalId() {
         return rentalId;
     }

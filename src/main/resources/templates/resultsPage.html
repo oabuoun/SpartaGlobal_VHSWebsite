@@ -15,13 +15,15 @@
     <h1 class="display-4">Results</h1>
 </div>
 
+
 <section class="filter">
     <div class="container">
         <form th:action="@{/filteredSearch}" method="post" novalidate="novalidate">
             <div class="row">
                 <div class="row">
                     <div class="col">
-                        <input type="text" class="form-control search-slt" name="filterSearch" placeholder="Enter data..." size="60">
+                        <input type="text" class="form-control search-slt" name="filterSearch"
+                               placeholder="Enter data..." size="60">
                     </div>
                     <div class="col">
                         <select class="form-control search-slt" name="filterSearchBy" id="exampleFormControlSelect1">
@@ -31,7 +33,7 @@
                         </select>
                     </div>
                     <div class="col">
-                        <button type="submit" class="btn btn-warning wrn-btn" value="submit" >Search</button>
+                        <button type="submit" class="btn btn-warning wrn-btn" value="submit">Search</button>
                     </div>
                 </div>
             </div>
@@ -41,24 +43,37 @@
 
 <br/>
 <br/>
-<form method="post" action="#">
+
     <div class="container">
         <div class="card-deck mb-3 text-center">
-            <div th:each="film : ${films}" class="card mb-4 box-shadow">
-                <div class="card-header">
-                    <h4 th:text="${film.title}" class="my-0 font-weight-normal">Movie 1</h4>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li th:text="${film.description}">Desc1</li>
-                    </ul>
-                    <label>Rent</label>
-                    <input type="checkbox" th:id="${film.filmId}" name="basket" th:value="${film.filmId}">
-                </div>
+            <div th:each=" film,iterStat : ${films}" class="card mb-4 box-shadow">
+                <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">
+                    <div class="card-header">
+                        <h4 th:text="${film.title}" class="my-0 font-weight-normal">Movie 1</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li th:text="${film.description}">Desc1</li>
+                        </ul>
+
+                        <!--                    <label>Rent</label>-->
+                        <!--                    <input type="checkbox" th:id="${film.filmId}" name="basket" th:value="${film.filmId}">-->
+
+                        <!--                    <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>-->
+
+                        <span th:if="${inStock[iterStat.index]}">
+                    <button type="submit" th:id="${film.filmId}" name="rent">Rent</button>
+                    </span>
+                        <span th:unless="${inStock[iterStat.index]}">
+                        <label>Sorry Not In Stock</label>
+                    </span>
+
+                    </div>
+                </form>
             </div>
         </div>
-        <input type="submit" value="Rent Selection">
+        <!--        <input type="submit" value="Rent Selection">-->
     </div>
-</form>
+
 </body>
 </html>
