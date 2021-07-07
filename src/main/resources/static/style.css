@@ -46,8 +46,6 @@
 
 .card-deck .card {
     min-width: 220px;
-    min-height: 300px;
-    max-height: 300px;
 
 }
 .card-header{
@@ -78,4 +76,15 @@
 
 .card-btn {
     top: -50px
+}
+
+.filter {
+    margin-right: 25%;
+    margin-left: 25%;
+    min-width: 300px;
+    max-width: 1400px;
+}
+
+.search-sec {
+    margin-right: -175px;
 }

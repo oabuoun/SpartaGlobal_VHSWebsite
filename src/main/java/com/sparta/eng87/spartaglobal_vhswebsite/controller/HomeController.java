@@ -25,8 +25,7 @@ public class HomeController {
 
          model.addAttribute("recentVHS", homePageFilmsService.getRecentlyUpdated());
          model.addAttribute("returnedVHS",homePageFilmsService.getMostRecentReturns());
-       // TODO add correct method name
-      //  model.addAttribute("recentVHS",filmService.findByRecent);
+         model.addAttribute("popularVHS",homePageFilmsService.getMostPopular());
 
         return "index";
 
