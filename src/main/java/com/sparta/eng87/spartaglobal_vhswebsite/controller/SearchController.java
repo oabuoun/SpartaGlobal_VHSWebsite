@@ -45,7 +45,6 @@ public class SearchController {
             title = "";
         }
 
-        // TODO check the ordering of the inputs
         model.addAttribute("inStock",stockCheckerService.isInStock(filmService.filter(genre,language,actor,title)));
         model.addAttribute("filteredResults", filmService.filter(genre,language,actor,title));
 

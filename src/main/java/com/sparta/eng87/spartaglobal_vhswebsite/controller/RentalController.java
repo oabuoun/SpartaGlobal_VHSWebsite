@@ -32,6 +32,9 @@ public class RentalController {
 
     @PostMapping("/rent/{id}")
     public String saveRental (@PathVariable("id") Integer id , Principal principal) {
+        if (principal == null) {
+            return "redirect:/login";
+        }
         List<FilmEntity> film = new ArrayList<>();
         film.add(filmService.findFilmByID(id));
         Integer inventoryID = stockCheckerService.getStock(film);

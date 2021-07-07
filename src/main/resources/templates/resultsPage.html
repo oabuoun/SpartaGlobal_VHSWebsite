@@ -61,10 +61,10 @@
 
                         <!--                    <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>-->
 
-                        <span th:if="${inStock[iterStat.index]}">
-                    <button type="submit" th:id="${film.filmId}" name="rent">Rent</button>
+                        <span th:if="${inStock.get(iterStat.index)}">
+                    <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${film.filmId}" name="rent">Rent</button>
                     </span>
-                        <span th:unless="${inStock[iterStat.index]}">
+                        <span th:unless="${inStock.get(iterStat.index)}">
                         <label>Sorry Not In Stock</label>
                     </span>
 

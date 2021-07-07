@@ -88,4 +88,8 @@ public class FilmService {
 
     }
 
+    public FilmEntity findFilmByID(int id){
+        return filmRepository.getFilmByID(id);
+    }
+
 }
