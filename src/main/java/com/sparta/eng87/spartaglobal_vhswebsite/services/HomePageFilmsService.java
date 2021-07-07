@@ -82,6 +82,8 @@ public class HomePageFilmsService {
         }
         return recentlyAdded;
     }
+    //I hate git
+    //a lot
     public List<Object[]> getMostPopular(){
         List<Object[]> mostPopularFilms= rentals.getMostPopularRentals();
         List<Object[]> results= new ArrayList<>();
