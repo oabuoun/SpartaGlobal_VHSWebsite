@@ -47,6 +47,7 @@
 .card-deck .card {
     min-width: 220px;
     min-height: 300px;
+    max-height: 300px;
 
 }
 .card-header{
@@ -66,12 +67,12 @@
 }
 
 .carousel .carousel-indicators li {
-    background-color: red;
+    background-color: black;
     top: 25px
 }
 
 .carousel .carousel-indicators li.active {
-    background-color: blue;
+    background-color: yellow;
     top: 25px
 }
 
