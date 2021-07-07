@@ -303,3 +303,9 @@ input[type=text]:placeholder {
 .signup-link{
     padding-bottom: 20px !important;
 }
+
+.center-search{
+    margin: auto !important;
+    width: 100% !important;
+    padding: 10px;
+}
