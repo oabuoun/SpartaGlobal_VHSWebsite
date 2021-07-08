@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 @Entity
 @Table(name = "staff", schema = "sakila", catalog = "")
+@SequenceGenerator(name="sequence2", initialValue=3, allocationSize = 1)
 public class StaffEntity {
     private Integer staffId;
     private String firstName;
@@ -21,6 +22,7 @@ public class StaffEntity {
 
     @Id
     @Column(name = "staff_id")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="sequence2")
     public Integer getStaffId() {
         return staffId;
     }

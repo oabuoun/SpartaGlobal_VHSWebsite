@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 @Entity
 @Table(name = "address", schema = "sakila", catalog = "")
+@SequenceGenerator(name="sequence3", initialValue=606, allocationSize = 1)
 public class AddressEntity {
     private Integer addressId;
     private String address;
@@ -14,11 +15,12 @@ public class AddressEntity {
     private Integer cityId;
     private String postalCode;
     private String phone;
-    private byte[] location;
+    //private byte[] location;
     private Timestamp lastUpdate;
 
     @Id
     @Column(name = "address_id")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="sequence3")
     public Integer getAddressId() {
         return addressId;
     }
@@ -87,15 +89,15 @@ public class AddressEntity {
         this.phone = phone;
     }
 
-    @Basic
-    @Column(name = "location")
-    public byte[] getLocation() {
-        return location;
-    }
-
-    public void setLocation(byte[] location) {
-        this.location = location;
-    }
+//    @Basic
+//    @Column(name = "location")
+//    public byte[] getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(byte[] location) {
+//        this.location = location;
+//    }
 
     @Basic
     @Column(name = "last_update")
@@ -121,7 +123,6 @@ public class AddressEntity {
         if (cityId != null ? !cityId.equals(that.cityId) : that.cityId != null) return false;
         if (postalCode != null ? !postalCode.equals(that.postalCode) : that.postalCode != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
-        if (!Arrays.equals(location, that.location)) return false;
         if (lastUpdate != null ? !lastUpdate.equals(that.lastUpdate) : that.lastUpdate != null) return false;
 
         return true;
@@ -136,7 +137,6 @@ public class AddressEntity {
         result = 31 * result + (cityId != null ? cityId.hashCode() : 0);
         result = 31 * result + (postalCode != null ? postalCode.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + Arrays.hashCode(location);
         result = 31 * result + (lastUpdate != null ? lastUpdate.hashCode() : 0);
         return result;
     }
