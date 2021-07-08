@@ -1,11 +1,10 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
+@SequenceGenerator(name="seq", initialValue=600)
 public class LoginEntity {
 
     @Id
@@ -16,6 +15,8 @@ public class LoginEntity {
     private String userPassword;
     private String userRole;
     private Integer userActivated;
+
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
     private Integer customer_id;
     private Integer staff_id;
 

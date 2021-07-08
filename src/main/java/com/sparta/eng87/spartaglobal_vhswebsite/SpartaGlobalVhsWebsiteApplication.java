@@ -22,6 +22,13 @@ public class SpartaGlobalVhsWebsiteApplication {
     @Bean
     public CommandLineRunner demo(LoginService loginService){
         return (args) -> {
+            LoginEntity loginEntity = new LoginEntity();
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            loginEntity.setUserName("Harry");
+            loginEntity.setUserPassword(encoder.encode("Harry"));
+            loginEntity.setUserRole("USER");
+            loginEntity.setUserActivated(1);
+            //loginService.addUser(loginEntity);
             //loginService.addUser(new LoginEntity("employee", encoder.encode("password"), "EMPLOYEE",1 , 1 ,1 ));
             //loginService.addUser(new LoginEntity("user", encoder.encode("password"), "USER",1 , 1 ,1 ));
         };
