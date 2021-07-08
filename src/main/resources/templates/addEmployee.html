@@ -14,7 +14,7 @@
 <body>
 <div class="container container-p5" style="padding-top: 2rem;">
     <h1 style="padding-bottom: 1rem;">Add an employee</h1>
-    <form action="/addEmployee" method="post">
+    <form th:action="@{/addEmployee}" method="post">
         <label>Username</label>
         <label><input type="text" name="username"></label>
         <br>
@@ -33,12 +33,15 @@
         <label>Address</label>
         <label><input type="text" name="address"></label>
         <br>
-        <label>Store</label>
-        <label><input type="text" name="store"></label>
+        <label>Phone Number</label>
+        <label><input type="number" name="phoneNumber"></label>
         <br>
-        <label>Picture link</label>
-        <label><input type="text" name="pictureLink"></label>
+        <label>Store ID</label>
+        <label><input type="number" name="storeId"></label>
         <br>
+<!--        <label>Picture link</label>-->
+<!--        <label><input type="text" name="pictureLink"></label>-->
+<!--        <br>-->
         <input type="submit" value="Add Employee">
     </form>
 </div>

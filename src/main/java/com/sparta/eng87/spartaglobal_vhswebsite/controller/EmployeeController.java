@@ -1,9 +1,6 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.controller;
 
-import com.sparta.eng87.spartaglobal_vhswebsite.entities.AddressEntity;
-import com.sparta.eng87.spartaglobal_vhswebsite.entities.CustomerEntity;
-import com.sparta.eng87.spartaglobal_vhswebsite.entities.FilmEntity;
-import com.sparta.eng87.spartaglobal_vhswebsite.entities.LoginEntity;
+import com.sparta.eng87.spartaglobal_vhswebsite.entities.*;
 import com.sparta.eng87.spartaglobal_vhswebsite.services.*;
 import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +29,21 @@ public class EmployeeController {
     private StockCheckerService stockCheckerService;
     private LoginService loginService;
     private AddressService addressService;
+    private StaffService staffService;
 
     @Autowired
-    public EmployeeController(FilmService filmService, CustomerService customerService, StockCheckerService stockCheckerService, LoginService loginService, AddressService addressService){
+    public EmployeeController(FilmService filmService,
+                              CustomerService customerService,
+                              StockCheckerService stockCheckerService,
+                              LoginService loginService,
+                              AddressService addressService,
+                              StaffService staffService){
         this.filmService=filmService;
         this.customerService =customerService;
         this.stockCheckerService = stockCheckerService;
         this.loginService = loginService;
         this.addressService = addressService;
+        this.staffService = staffService;
     }
 
     @GetMapping("/employee")
@@ -99,6 +103,63 @@ public class EmployeeController {
     public String getAddCustomerPage() {
         return "addUser";
     }
+
+    @GetMapping("/addEmployee")
+    public String getAddEmployeePage() {
+        return "addEmployee";
+    }
+
+    @PostMapping("/addEmployee")
+    public String addEmployee(@RequestParam(name = "username") String username,
+                              @RequestParam(name = "password") String password,
+                              @RequestParam(name = "firstName") String firstName,
+                              @RequestParam(name = "lastName") String lastName,
+                              @RequestParam(name = "email") String email,
+                              @RequestParam(name = "address") String address,
+                              @RequestParam(name = "storeId") Integer storeId,
+                              @RequestParam(name = "phoneNumber") String phoneNumber) {
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodedPassword = encoder.encode(password);
+
+        AddressEntity addressEntity = new AddressEntity();
+        addressEntity.setAddress(address);
+        addressEntity.setCityId(1);
+        addressEntity.setDistrict("Narnia");
+        addressEntity.setCityId(1);
+        Date date = new Date();
+        long time = date.getTime();
+        Timestamp ts = new Timestamp(time);
+        addressEntity.setLastUpdate(ts);
+        addressEntity.setPhone(phoneNumber);
+        addressService.save(addressEntity);
+
+        StaffEntity staffEntity = new StaffEntity();
+        staffEntity.setFirstName(firstName);
+        staffEntity.setLastName(lastName);
+        staffEntity.setEmail(email);
+        staffEntity.setStoreId(storeId);
+        staffEntity.setActive((byte)1);
+        staffEntity.setAddressId(addressEntity.getAddressId());
+        //staffEntity.setPassword(encodedPassword);
+        staffEntity.setUsername(username);
+        staffEntity.setLastUpdate(ts);
+        staffService.save(staffEntity);
+
+        LoginEntity loginEntity = new LoginEntity();
+        loginEntity.setUserName(username);
+        loginEntity.setUserPassword(encodedPassword);
+        loginEntity.setUserRole("EMPLOYEE");
+        loginEntity.setUserActivated(1);
+        loginEntity.setStaff_id(staffEntity.getStaffId());
+        loginService.addUser(loginEntity);
+
+
+        return "redirect:/employee";
+
+
+    }
+
 
     @PostMapping("/employeeSearch")
     public String employeeSearch (@RequestParam(name = "search") String search, Model model) {
