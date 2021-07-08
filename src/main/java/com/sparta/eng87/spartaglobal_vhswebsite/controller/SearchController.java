@@ -85,6 +85,8 @@ public class SearchController {
 
         model.addAttribute("inStock",stockCheckerService.isInStock(filmService.filter(actorOutput,title,genreOutput)));
         model.addAttribute("films", filmService.filter(actorOutput,title,genreOutput));
+        model.addAttribute("actors",filterService.getAllActors());
+        model.addAttribute("genres",filterService.getAllGenres());
 
         return "resultsPage";
 

@@ -1,7 +1,7 @@
 
 .background{
-    background-image: url("images/pain (2).png");
-    background-size: 150% 150%;
+    background-image: url("images/painPart3.png");
+    background-repeat: repeat;
 }
 
 .navbarSearch {
@@ -52,6 +52,15 @@
     margin-right: 35%;
     margin-left: 35%;
 }
+
+.resultsFormat {
+    max-width: 960px;
+    margin-right: 47%;
+    margin-left: 47%;
+    border: #0d0d0d;
+    border-radius: 40px;
+}
+
 .pricing-header {
     max-width: 700px;
 }

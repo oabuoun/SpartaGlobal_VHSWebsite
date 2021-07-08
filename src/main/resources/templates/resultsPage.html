@@ -23,45 +23,46 @@
         <form th:action="@{/refine}" method="POST">
             <div class="accordion" id="accordionExample">
 
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="card-link" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+
+                        <div class="card-header" data-toggle="collapse" href="#collapseOne" th:border="black">
+                            <a class="collapsed card-link" >
+                                <p class="resultsFormat">
                               Actors
+                                </p>
                             </a>
                         </div>
-                        <div id="collapseOne" class="collapse" data-parent="#accordion" >
+                        <div id="collapseOne" class="collapse" data-parent="#accordion" style="background: white" >
                             <div class="card-body">
                                 <ul id="actors">
-                                    <li  th:each="actor : ${actors}">
+                                    <p  th:each="actor : ${actors}">
                                         <input type="checkbox" th:value="${actor.firstName}+${actor.lastName}" name="actors">
                                         <label th:text="${actor.firstName}+' '+ ${actor.lastName}">name</label>
-                                    </li>
+                                    </p>
                                 </ul>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                        <div class="card-header" data-toggle="collapse" href="#collapseTwo">
+                            <a class="collapsed card-link" >
+                                <p class="resultsFormat">
                                 Genres
+                                </p>
                             </a>
                         </div>
-                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                        <div id="collapseTwo" class="collapse" data-parent="#accordion" style="background: white">
                             <div class="card-body">
                                 <ul id="categories">
-                                    <li  th:each="genre : ${genres}">
+                                    <p  th:each="genre : ${genres}">
                                         <input type="checkbox" th:value="${genre.name}" name="genres" >
                                         <label th:text="${genre.name}">name</label>
-                                    </li>
+                                    </p>
                                 </ul>
                             </div>
                         </div>
-                    </div>
             </div>
 
 
-          <button style="align-content: center" type="submit">Apply Filters</button>
+          <button class="btn btn-lg btn-block btn-outline-dark card-btn" type="submit">Apply Filters</button>
         </form>
 </section>
 
@@ -80,31 +81,45 @@ document.getElementById("main").style.marginLeft = "0";
 </script>
 <br/>
 <br/>
+<section class="resultsFormat">
+    <span th:if="${films.size() == 0}">
+       <h1 >No Results Found</h1>
+    </span>
+</section>
 
+<section class="text-center my-5">
     <div class="container">
-        <div class="card-deck mb-3 text-center">
-            <div th:each=" film,iterStat : ${films}" class="card mb-4 box-shadow">
-                <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">
+        <div class="row text-center card-deck">
+            <div th:each=" film,iterStat : ${films}"  class="col-sm-4">
+                <div class="card mb-4 box-shadow">
+
+
                     <div class="card-header">
                         <h4 th:text="${film.title}" class="my-0 font-weight-normal">Movie 1</h4>
                     </div>
+
                     <div class="card-body">
-                        <ul class="list-unstyled mt-3 mb-4">
+                        <ul class="list-unstyled mt-0 mb-5">
                             <li th:text="${film.description}">Desc1</li>
                         </ul>
-
-                        <span th:if="${inStock.get(iterStat.index)}">
-                    <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${film.filmId}" name="rent">Rent</button>
-                    </span>
-                        <span th:unless="${inStock.get(iterStat.index)}">
-                        <label>Sorry Not In Stock</label>
-                    </span>
-
                     </div>
-                </form>
+
+                    <div class="card-footer">
+                        <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">
+                        <span th:if="${inStock.get(iterStat.index)}">
+                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${film.filmId}" name="rent">Rent</button>
+                        </span>
+                        <span th:unless="${inStock.get(iterStat.index)}">
+                            <button type="button" class="btn btn-lg btn-block btn-outline-warning card-btn" >Sorry out of Stock</button>
+                        </span>
+                        </form>
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>
-
+</section>
 </body>
 </html>

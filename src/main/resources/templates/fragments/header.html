@@ -27,17 +27,17 @@
             <li sec:authorize="!isAuthenticated()" class="nav-item">
                 <a class="nav-link" th:href="@{/login}">Login</a>
             </li>
-            <li sec:authorize="isAuthenticated()" class="nav-item">
-                <a href="javascript: document.logoutForm.submit()" class="nav-link">Log Out</a>
-                <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-                    <input hidden type="submit" value="Sign Out" />
-                </form>
-            </li>
             <li sec:authorize="hasAuthority('USER')" class="nav-item">
                 <a class="nav-link" th:href="@{/user}">My Account</a>
             </li>
             <li sec:authorize="hasAuthority('EMPLOYEE')" class="nav-item">
                 <a class="nav-link" th:href="@{/employee}">Employee Page</a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <a href="javascript: document.logoutForm.submit()" class="nav-link">Log Out</a>
+                <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                    <input hidden type="submit" value="Sign Out" />
+                </form>
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
@@ -53,7 +53,6 @@
                     <input type="text" class="form-control search-slt" name="search" placeholder="Enter data...">
                     <button type="submit" class="btn btn-warning wrn-btn" value="submit" >Search</button>
                 </div>
-
             </form>
 
 <!--                        <form class=th:action="@{/search}" method="post" novalidate="novalidate" >-->
