@@ -51,7 +51,7 @@ public interface FilmRepository extends JpaRepository<FilmEntity, Integer> {
             "AND f.title LIKE %?2% " +
             "AND c.name IN (?3) " +
             "GROUP BY f.title", nativeQuery = true)
-    List<FilmEntity> findFilmsFromCheckbox (String actor, String title, String genre);
+    List<FilmEntity> findFilmsFromCheckbox (String actor, String title, List<String> genre);
 
     @Query(value = "select * From film where film_id=?",nativeQuery = true)
     FilmEntity getFilmByID(int ID);
