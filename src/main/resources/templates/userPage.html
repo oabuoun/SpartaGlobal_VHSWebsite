@@ -33,7 +33,12 @@
                 </div>
                 <div class="card-body">
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li th:text="${film.description}">Desc1</li>
+                        <li th:text="${film[1]}">Desc1</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li th:text="'Return due on: ' + ${film[2]}">Return</li>
                     </ul>
                 </div>
             </div>
@@ -58,6 +63,11 @@
                 <div class="card-body">
                     <ul class="list-unstyled mt-3 mb-4">
                         <li th:text="${film[1]}">Desc1</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li th:text="'Rented on: ' + ${film[2]}">Desc1</li>
                     </ul>
                 </div>
             </div>
