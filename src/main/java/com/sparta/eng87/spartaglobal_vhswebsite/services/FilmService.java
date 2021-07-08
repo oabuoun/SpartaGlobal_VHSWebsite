@@ -1,18 +1,12 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.services;
 
 import com.sparta.eng87.spartaglobal_vhswebsite.POJO.AdvancedSearchTerms;
-import com.sparta.eng87.spartaglobal_vhswebsite.entities.CustomerEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.FilmEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.repositories.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 
 @Service
 public class FilmService {
@@ -56,7 +50,10 @@ public class FilmService {
        return filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
     }
 
-    public List<FilmEntity> filter(String firstName, String lastName, String title, String genre){
+    public List<FilmEntity> filter(String actors, String title, String genre){
+        return filmRepository.findFilmsFromCheckbox(actors, title, genre);
+    }
+    public List<FilmEntity> filter(String firstName,String lastName, String title, String genre){
         return filmRepository.findFilmsFromFilter(firstName, lastName, title, genre);
     }
 

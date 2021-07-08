@@ -346,3 +346,11 @@ input[type=text]::placeholder {
     min-width: 600px;
     text-align: center;
 }
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}

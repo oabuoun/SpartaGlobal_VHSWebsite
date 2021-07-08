@@ -1,25 +1,16 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.POJO;
 
 public class SearchTerms {
-    private String searchTerm;
-    private String category;
+    private static String title;
 
     public SearchTerms() {
     }
 
-    public String getSearchTerm() {
-        return searchTerm;
+    public static String getTitle() {
+        return title;
     }
 
-    public void setSearchTerm(String searchTerm) {
-        this.searchTerm = searchTerm;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    public static void setTitle (String search) {
+        title = search;
     }
 }

@@ -23,4 +23,15 @@ public interface RentalRepository extends JpaRepository<RentalEntity, Integer>{
             "ORDER BY total_rents DESC", nativeQuery = true)
     List<Object[]> getMostPopularRentals();
 
+    @Query(value="select f.title, r.rental_date r.return_date FROM rental " +
+            "WHERE customer_id = ? " +
+            "INNER JOIN inventory i ON i.inventory_id = r.inventory_id " +
+            "INNER JOIN film f ON f.film_id = i.film_id " +
+            "ORDER BY r.return_date"
+            , nativeQuery = true)
+
+    List<Object[]> getRentedFilmsByCustomerId(int id);
+
+
+
 }

@@ -25,6 +25,9 @@ public class StockCheckerService {
         List<Boolean> inStock = new ArrayList<>();
         for( FilmEntity film :  films){
           List<InventoryEntity> filmsInventory = homePageFilmsService.getInventoryByFilmID(film.getFilmId());
+            if(filmsInventory.size()==0){
+              inStock.add(false);
+            }
                     for (InventoryEntity inventory:
                             filmsInventory) {
                         if (homePageFilmsService.getRentalEntitiesByInventoryId(inventory.getInventoryId()).get(0).getReturnDate()!=null){

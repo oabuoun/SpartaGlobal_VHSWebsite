@@ -25,7 +25,7 @@ public class AdvancedSearchTerms {
         this.lastName = lastName;
     }
 
-    public String getTitle() {
+    public static String getTitle() {
         return title;
     }
 

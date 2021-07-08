@@ -42,6 +42,17 @@ public interface FilmRepository extends JpaRepository<FilmEntity, Integer> {
             "GROUP BY f.title", nativeQuery = true)
     List<FilmEntity> findFilmsFromFilter (String firstName, String lastName, String title, String genre);
 
+    @Query(value = "SELECT f.* FROM film f " +
+            "INNER JOIN film_actor fa ON f.film_id = fa.film_id " +
+            "INNER JOIN actor a ON fa.actor_id = a.actor_id " +
+            "INNER JOIN film_category fc ON f.film_id = fc.film_id " +
+            "INNER JOIN category c ON fc.category_id = c.category_id " +
+            "WHERE concat(a.first_name,a.last_name) IN (?1) " +
+            "AND f.title LIKE %?2% " +
+            "AND c.name IN (?3) " +
+            "GROUP BY f.title", nativeQuery = true)
+    List<FilmEntity> findFilmsFromCheckbox (String actor, String title, String genre);
+
     @Query(value = "select * From film where film_id=?",nativeQuery = true)
     FilmEntity getFilmByID(int ID);
 
