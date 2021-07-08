@@ -5,8 +5,12 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "customer", schema = "sakila", catalog = "")
+@SequenceGenerator(name="sequence", initialValue=600, allocationSize = 1)
 public class CustomerEntity {
-    private Integer customerId;
+
+    //@Id
+    //@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
+    private Short customerId;
     private Integer storeId;
     private String firstName;
     private String lastName;
@@ -18,11 +22,12 @@ public class CustomerEntity {
 
     @Id
     @Column(name = "customer_id")
-    public Integer getCustomerId() {
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="sequence")
+    public Short getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Integer customerId) {
+    public void setCustomerId(Short customerId) {
         this.customerId = customerId;
     }
 

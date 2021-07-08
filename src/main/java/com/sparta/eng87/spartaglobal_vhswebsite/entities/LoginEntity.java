@@ -1,10 +1,12 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.entities;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 
 @Entity
-@SequenceGenerator(name="seq", initialValue=600)
+@SequenceGenerator(name="sequence1", initialValue=600, allocationSize = 1)
 public class LoginEntity {
 
     @Id
@@ -16,8 +18,12 @@ public class LoginEntity {
     private String userRole;
     private Integer userActivated;
 
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
-    private Integer customer_id;
+
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+    //@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
+    //@OneToOne
+    private Short customer_id;
     private Integer staff_id;
 
 
@@ -27,7 +33,7 @@ public class LoginEntity {
 
 
 
-    public LoginEntity(String userName, String userPassword, String userRole, Integer userActivated, Integer customer_id, Integer staff_id) {
+    public LoginEntity(String userName, String userPassword, String userRole, Integer userActivated, Short customer_id, Integer staff_id) {
         this.userName = userName;
         this.userPassword = userPassword;
         this.userRole = userRole;
@@ -45,11 +51,11 @@ public class LoginEntity {
     public Integer getStaff_id() {
         return staff_id;
     }
-    public Integer getCustomer_id() {
+    public Short getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(Integer customer_id) {
+    public void setCustomer_id(Short customer_id) {
         this.customer_id = customer_id;
     }
 
