@@ -4,11 +4,13 @@ import com.sparta.eng87.spartaglobal_vhswebsite.POJO.AdvancedSearchTerms;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.CustomerEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.entities.FilmEntity;
 import com.sparta.eng87.spartaglobal_vhswebsite.repositories.FilmRepository;
+import com.sparta.eng87.spartaglobal_vhswebsite.repositories.RentalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +20,12 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
 public class FilmService {
 
     private FilmRepository filmRepository;
+    private RentalRepository rentalRepository;
 
     @Autowired
-    public FilmService(FilmRepository filmRepository) {
+    public FilmService(FilmRepository filmRepository, RentalRepository rentalRepository) {
         this.filmRepository = filmRepository;
+        this.rentalRepository = rentalRepository;
     }
 
     private AdvancedSearchTerms search = new AdvancedSearchTerms();
@@ -53,14 +57,14 @@ public class FilmService {
         search.setFirstName("");
         search.setLastName("");
         search.setTitle("");
-       return filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
+        return filter(search.getFirstName(), search.getFirstName(), search.getTitle(), search.getGenre());
     }
 
-    public List<FilmEntity> filter(String firstName, String lastName, String title, String genre){
+    public List<FilmEntity> filter(String firstName, String lastName, String title, String genre) {
         return filmRepository.findFilmsFromFilter(firstName, lastName, title, genre);
     }
 
-    public void save(FilmEntity filmEntity){
+    public void save(FilmEntity filmEntity) {
         filmRepository.save(filmEntity);
     }
 
@@ -88,8 +92,23 @@ public class FilmService {
 
     }
 
-    public FilmEntity findFilmByID(int id){
+    public FilmEntity findFilmByID(int id) {
         return filmRepository.getFilmByID(id);
     }
 
+    public List<String> whenInStock(List<FilmEntity> filmEntityList, List<Boolean> inStock) {
+
+        List<String> backWhen = new ArrayList<>();
+        for (int i = 0; i < filmEntityList.size(); i++) {
+            if (!inStock.get(i)) {
+
+                Timestamp temp = rentalRepository.whenInStock(filmEntityList.get(i).getFilmId());
+                temp.setTime(temp.getTime() + 604800000);
+                backWhen.add(temp.toString().substring(0,11));
+
+            } else backWhen.add("stock");
+        }
+        return backWhen;
+
+    }
 }

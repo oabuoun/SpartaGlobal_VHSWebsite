@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class EmployeeController {
 
-    // TODO add in the other functions a employee will have
+
 
 
     private FilmService filmService;
@@ -63,8 +65,12 @@ public class EmployeeController {
 
     @PostMapping("/employeeSearch")
     public String employeeSearch (@RequestParam(name = "search") String search, Model model) {
-        model.addAttribute("inStock",stockCheckerService.isInStock(filmService.findFilmsByTitle(search)));
-        model.addAttribute("films", filmService.findFilmsByTitle(search));
+        List<FilmEntity> filmEntityList = filmService.findFilmsByTitle(search);
+        List<Boolean> inStock =stockCheckerService.isInStock(filmEntityList);
+        model.addAttribute("dueBack", filmService.whenInStock(filmEntityList,inStock));
+        model.addAttribute("inStock",inStock);
+        model.addAttribute("films", filmEntityList);
+
         return "employeeResults";
     }
 

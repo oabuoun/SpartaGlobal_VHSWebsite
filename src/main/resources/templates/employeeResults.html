@@ -61,13 +61,14 @@
 
                     <!--                    <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>-->
 
+                    <div class="card-footer">
                     <span th:if="${inStock.get(iterStat.index)}">
                         <label>In Stock</label>
                     </span>
-                    <span th:unless="${inStock.get(iterStat.index)}">
+                    <span th:unless="${dueBack.get(iterStat.index).equals('stock')}">
                         <label>Sorry Not In Stock</label>
                     </span>
-
+                    </div>
                 </div>
             </form>
         </div>
