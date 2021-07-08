@@ -73,10 +73,10 @@ public class CustomerService {
             dueDate.setTime( temp.getTime() + 604800000);
             alertDay.setTime( temp.getTime() + 518400000);
 
-            if (!currentTime.isAfter(dueDate.toLocalDateTime()))
+            if (currentTime.isAfter(dueDate.toLocalDateTime()))
             {
                 dueStatus.add(2);
-            }else if (!currentTime.isAfter(alertDay.toLocalDateTime())){
+            }else if (currentTime.isAfter(alertDay.toLocalDateTime())){
                 dueStatus.add(1);
             }else dueStatus.add(0);
 
