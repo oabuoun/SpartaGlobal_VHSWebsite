@@ -12,64 +12,76 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
 </head>
-<body>
+<body class="background">
 <nav th:replace="fragments/header.html :: navbar"></nav>
 <br/>
 <h1 align="center" th:text="'Welcome ' + ${username}">USER PAGE</h1>
 <br/>
-<h1 align="center">Currently Renting</h1>
-<form >
-    <div class="container">
-        <div class="card-deck mb-3 text-center">
-            <div th:if="${currentlyRented.equals(null)}" >
-                <h3>Nothing currently being rented</h3>
-            </div>
-            <div th:unless="${currentlyRented.equals(null)}">
 
-            <div th:each="film, iterStat : ${currentlyRented}" class="card mb-4 box-shadow">
+<section class="text-center my-5">
+    <div class="containerUser">
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold my-5 ">Currently Renting</h2>
+            <form >
+                <div th:if="${currentlyRented.equals(null)}" >
+                            <h3>Nothing currently being rented</h3>
+                        </div>
 
-                <div class="card-header">
+                        <div class="row text-center card-deck">
+                        <div  th:unless="${currentlyRented.equals(null)}">
 
-                    <h4 th:text="${film[0]}" class="my-0 font-weight-normal">Movie 1</h4>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li th:text="${film[1]}">Desc1</li>
-                    </ul>
-                </div>
-                <div class="card-footer">
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li th:text="'Return due on: ' + ${film[2]}">Return</li>
-                        <li th:if="${dueStatus.get(iterStat.index) == 1}"> VHS is due back tomorrow</li>
-                        <li th:if="${dueStatus.get(iterStat.index) == 2}"> VHS is Overdue</li>
-                     </ul>
-                </div>
-            </div>
-         </div>
-        </div>
+                        <div th:each="film, iterStat : ${currentlyRented}" class="col-sm-12" >
+                            <div class="card mb-4 box-shadow">
+
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal" th:text="${film[0]}">Movie 1</h4>
+                            </div>
+
+                            <div class="card-body">
+                                <ul class="list-unstyled mt-0 mb-5">
+                                    <li th:text="${film[1]}">Desc1</li>
+                                </ul>
+                            </div>
+
+                            <div class="card-footer">
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li th:text="'Return due on: ' + ${film[2]}">Return</li>
+                                    <li th:if="${dueStatus.get(iterStat.index) == 1}"> VHS is due back tomorrow</li>
+                                    <li th:if="${dueStatus.get(iterStat.index) == 2}"> VHS is Overdue</li>
+                                 </ul>
+                            </div>
+                        </div>
+                        </div>
+                     </div>
+                        </div>
+            </form>
     </div>
-</form>
-<br/>
-<br/>
-<h1 align="center">Previously Rented</h1>
-<form >
-    <div class="container">
-        <div class="card-deck mb-3 text-center">
+</section>
+
+
+
+<section class="text-center my-5">
+    <div class="containerUser">
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold my-5 ">Previously Rented</h2>
+        <form >
             <div th:if="${previouslyRented.equals(null)}" >
                 <h3>No rental history</h3>
             </div>
+            <div class="row text-center card-deck">
             <div th:unless="${currentlyRented.equals(null)}">
-            <div th:each="film : ${previouslyRented}" class="card mb-4 box-shadow">
+            <div th:each="film : ${previouslyRented}" class="col-sm-12">
+                <div class="card mb-4 box-shadow">
                 <div class="card-header">
                     <h4 th:text="${film[0]}" class="my-0 font-weight-normal">Movie 1</h4>
                 </div>
                 <div class="card-body">
-                    <ul class="list-unstyled mt-3 mb-4">
+                    <ul class="list-unstyled mt-0 mb-5">
                         <li th:text="${film[1]}">Desc1</li>
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <ul class="list-unstyled mt-3 mb-4">
+                    <ul class="list-unstyled mt-0 mb-5">
                         <li th:text="'Rented on: ' + ${film[2]}">Desc1</li>
                     </ul>
                 </div>
@@ -77,7 +89,9 @@
         </div>
             </div>
     </div>
-</form>
+    </form>
+    </div>
+</section>
 <footer>
     <nav th:replace="fragments/footer.html :: navbar"></nav>
 </footer>
