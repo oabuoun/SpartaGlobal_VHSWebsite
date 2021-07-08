@@ -41,7 +41,7 @@
             </li>
         </ul>
         <div class="form-inline my-2 my-lg-0">
-            <form class="form-inline">
+                <form class="form-inline" th:action="@{/search}" method="post" novalidate="novalidate" >
                 <div class="input-group-prepend">
 
                     <select class="form-control search-slt" name="searchBy" id="exampleFormControlSelect">
