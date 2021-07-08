@@ -26,9 +26,10 @@
             </div>
             <div th:unless="${currentlyRented.equals(null)}">
 
-            <div th:each="film : ${currentlyRented}" class="card mb-4 box-shadow">
+            <div th:each="film, iterStat : ${currentlyRented}" class="card mb-4 box-shadow">
+
                 <div class="card-header">
-<!--                    <h4 th:text="${film[iterStat.index].title}" class="my-0 font-weight-normal">Movie 1</h4>-->
+
                     <h4 th:text="${film[0]}" class="my-0 font-weight-normal">Movie 1</h4>
                 </div>
                 <div class="card-body">
@@ -39,7 +40,9 @@
                 <div class="card-footer">
                     <ul class="list-unstyled mt-3 mb-4">
                         <li th:text="'Return due on: ' + ${film[2]}">Return</li>
-                    </ul>
+                        <li th:if="${dueStatus.get(iterStat.index) == 1}"> VHS is due back tomorrow</li>
+                        <li th:if="${dueStatus.get(iterStat.index) == 2}"> VHS is Overdue</li>
+                     </ul>
                 </div>
             </div>
          </div>

@@ -30,7 +30,7 @@ public class SpartaGlobalVhsWebsiteApplication {
             loginEntity.setUserActivated(1);
             //loginService.addUser(loginEntity);
             //loginService.addUser(new LoginEntity("employee", encoder.encode("password"), "EMPLOYEE",1 , 1 ,1 ));
-            //loginService.addUser(new LoginEntity("user", encoder.encode("password"), "USER",1 , 1 ,1 ));
+            //loginService.addUser(new LoginEntity("user", encoder.encode("password"), "CUSTOMER",1 , 1 ,1 ));
         };
     }
 }
