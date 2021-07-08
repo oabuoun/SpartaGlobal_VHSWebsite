@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/employee").hasAuthority("EMPLOYEE")
                 .antMatchers("/addUser").hasAuthority("EMPLOYEE")
-                .antMatchers("/user").hasAuthority("CUSTOMER")
+                .antMatchers("/user").hasAuthority("USER")
                 .anyRequest().permitAll()
                 .and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler())
         .and().logout(logout -> logout
