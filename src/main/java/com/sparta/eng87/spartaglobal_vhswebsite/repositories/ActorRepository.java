@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ActorRepository extends JpaRepository<ActorEntity,Integer> {
-    @Query(value="Select * from actor",nativeQuery = true)
+    @Query(value="Select * from actor ORDER BY first_name",nativeQuery = true)
     List<ActorEntity> getAllActors();
 
 }

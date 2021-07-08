@@ -1,3 +1,9 @@
+
+.background{
+    background-image: url("images/painPart3.png");
+    background-repeat: repeat;
+}
+
 .navbarSearch {
     height: 30px;
     border-right: none;
@@ -41,16 +47,36 @@
     margin-right: 30px;
 }
 
+.containerUser {
+    max-width: 960px;
+    margin-right: 35%;
+    margin-left: 35%;
+}
+
+.resultsFormat {
+    max-width: 960px;
+    margin-right: 47%;
+    margin-left: 47%;
+    border: #0d0d0d;
+    border-radius: 40px;
+}
+
 .pricing-header {
     max-width: 700px;
 }
 
-.card-deck .card {
-    min-width: 220px;
-    max-height: 300px;
-    min-height: 300px;
-
+.card-deck {
+    min-width: 100%;
+    max-width: 100%;
 }
+
+.card {
+    min-width: 225px;!important;
+    max-height: 80%;
+    min-height: 80%;
+    word-wrap: break-word;
+}
+
 .card-header{
     background-color:yellow !important;
 }
@@ -345,21 +371,4 @@ input[type=text]::placeholder {
     margin-left: 15%;
     min-width: 600px;
     text-align: center;
-}
-
-.custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
-.custom-toggler.navbar-toggler {
-    border-color: rgb(255, 255, 0);
-
-}
-
-.sidebar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
 }

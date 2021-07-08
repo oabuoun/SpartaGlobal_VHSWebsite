@@ -11,7 +11,7 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="background">
 <div class="container container-p5" style="padding-top: 2rem;">
     <h1 style="padding-bottom: 1rem;">Add an employee</h1>
     <form th:action="@{/addEmployee}" method="post">
@@ -19,7 +19,7 @@
         <label><input type="text" name="username"></label>
         <br>
         <label>Password</label>
-        <label><input type="text" name="password"></label>
+        <label><input type="password" name="password"></label>
         <br>
         <label>First name</label>
         <label><input type="text" name="firstName"></label>

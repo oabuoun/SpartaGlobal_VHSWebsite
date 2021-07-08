@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface GenreRepository extends JpaRepository<CategoryEntity,Integer> {
-    @Query(value="Select * from category",nativeQuery = true)
+    @Query(value="Select * from category ORDER BY name",nativeQuery = true)
     List<CategoryEntity> getAllGenres();
 }
