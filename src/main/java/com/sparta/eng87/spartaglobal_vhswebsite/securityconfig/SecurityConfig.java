@@ -39,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/addUser").hasAuthority("EMPLOYEE")
                 .antMatchers("/user").hasAuthority("USER")
                 .anyRequest().permitAll()
+
                 .and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler())
         .and().logout(logout -> logout
                 .logoutUrl("/logout")

@@ -5,9 +5,12 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
 <body>
 <nav th:replace="fragments/header.html :: navbar"></nav>
@@ -17,30 +20,64 @@
 
 
 <section class="filter">
-    <div class="container">
-        <form th:action="@{/filteredSearch}" method="post" novalidate="novalidate">
-            <div class="row">
-                <div class="row">
-                    <div class="col">
-                        <input type="text" class="form-control search-slt" name="filterSearch"
-                               placeholder="Enter data..." size="60">
+        <form th:action="@{/refine}" method="POST">
+            <div class="accordion" id="accordionExample">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                              Actors
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="collapse" data-parent="#accordion" >
+                            <div class="card-body">
+                                <ul id="actors">
+                                    <li  th:each="actor : ${actors}">
+                                        <input type="checkbox" th:value="${actor.firstName}+${actor.lastName}" name="actors">
+                                        <label th:text="${actor.firstName}+' '+ ${actor.lastName}">name</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <select class="form-control search-slt" name="filterSearchBy" id="exampleFormControlSelect1">
-                            <option value="title">Title</option>
-                            <option value="genre">Genre</option>
-                            <option value="actor">Actor</option>
-                        </select>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+                                Genres
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul id="categories">
+                                    <li  th:each="genre : ${genres}">
+                                        <input type="checkbox" th:value="${genre.name}" name="genres" >
+                                        <label th:text="${genre.name}">name</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-warning wrn-btn" value="submit">Search</button>
-                    </div>
-                </div>
             </div>
+
+
+          <button style="align-content: center" type="submit">Apply Filters</button>
         </form>
-    </div>
 </section>
 
+<script>
+/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+function openNav() {
+document.getElementById("Sidebar").style.width = "250px";
+document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+document.getElementById("Sidebar").style.width = "0";
+document.getElementById("main").style.marginLeft = "0";
+}
+</script>
 <br/>
 <br/>
 
@@ -56,11 +93,6 @@
                             <li th:text="${film.description}">Desc1</li>
                         </ul>
 
-                        <!--                    <label>Rent</label>-->
-                        <!--                    <input type="checkbox" th:id="${film.filmId}" name="basket" th:value="${film.filmId}">-->
-
-                        <!--                    <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>-->
-
                         <span th:if="${inStock.get(iterStat.index)}">
                     <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${film.filmId}" name="rent">Rent</button>
                     </span>
@@ -72,7 +104,6 @@
                 </form>
             </div>
         </div>
-        <!--        <input type="submit" value="Rent Selection">-->
     </div>
 
 </body>

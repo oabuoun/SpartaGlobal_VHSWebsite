@@ -1,5 +1,7 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.controller;
+import com.sparta.eng87.spartaglobal_vhswebsite.POJO.SearchTerms;
 import com.sparta.eng87.spartaglobal_vhswebsite.services.FilmService;
+import com.sparta.eng87.spartaglobal_vhswebsite.services.FilterService;
 import com.sparta.eng87.spartaglobal_vhswebsite.services.StockCheckerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +17,14 @@ public class NavBarController {
 
     private FilmService filmService;
     private StockCheckerService stockCheckerService;
+    private FilterService filter;
 
 
     @Autowired
-    public NavBarController(FilmService filmService, StockCheckerService stockCheckerService){
+    public NavBarController(FilmService filmService, StockCheckerService stockCheckerService, FilterService filter){
         this.filmService=filmService;
         this.stockCheckerService = stockCheckerService;
+        this.filter=filter;
     }
 
 
@@ -41,7 +45,8 @@ public class NavBarController {
 
     @PostMapping("/search")
     public String navBarSearch(@RequestParam(name = "search") String search, @RequestParam(name = "searchBy") String box,Model model ){
-
+                model.addAttribute("actors",filter.getAllActors());
+                model.addAttribute("genres",filter.getAllGenres());
         switch(box) {
             case "title":
                 model.addAttribute("inStock",stockCheckerService.isInStock(filmService.findFilmsByTitle(search)));
@@ -56,6 +61,7 @@ public class NavBarController {
                 model.addAttribute("films", filmService.findFilmsByGenre(search));
                 break;
         }
+        SearchTerms.setTitle(search);
 
         return "resultsPage";
     }
