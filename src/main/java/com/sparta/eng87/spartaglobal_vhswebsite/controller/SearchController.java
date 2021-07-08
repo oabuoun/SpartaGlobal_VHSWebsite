@@ -41,8 +41,6 @@ public class SearchController {
 
         List<String> actorsList=new ArrayList<>();
         List<String> genresList=new ArrayList<>();
-        String actorOutput="";
-        String genreOutput="";
         if (actors==null){ for (ActorEntity actor:
                 filterService.getAllActors()) {
             actorsList.add(actor.getFirstName()+actor.getLastName());
@@ -53,13 +51,7 @@ public class SearchController {
                 actorsList.add(currentActor);
             }
         }
-            for (String actor:
-                 actorsList) {
-                if(actor.equals(actorsList.get(actorsList.size()-1))) {
-                    actorOutput += actor;
-                }
-                else{actorOutput += actor+",";}
-            }
+
 
         if (genres==null){
             for (CategoryEntity genre:
@@ -74,17 +66,11 @@ public class SearchController {
              genresList.add(currentGenre);
             }
         }
-            for (String genre:
-                    genresList) {
-                if(genre.equals(genresList.get(genresList.size()-1))) {
-                    genreOutput += genre;
-                }
-                else{genreOutput += genre+",";}
-            }
+
        String title= SearchTerms.getTitle();
 
-        model.addAttribute("inStock",stockCheckerService.isInStock(filmService.filter(actorOutput,title,genreOutput)));
-        model.addAttribute("films", filmService.filter(actorOutput,title,genreOutput));
+        model.addAttribute("inStock",stockCheckerService.isInStock(filmService.filter(actorsList,title,genresList)));
+        model.addAttribute("films", filmService.filter(actorsList,title,genresList));
         model.addAttribute("actors",filterService.getAllActors());
         model.addAttribute("genres",filterService.getAllGenres());
 

@@ -56,7 +56,7 @@ public class FilmService {
     }
 
 
-    public List<FilmEntity> filter(String actors, String title, String genre){
+    public List<FilmEntity> filter(List<String> actors, String title, List<String> genre){
         return filmRepository.findFilmsFromCheckbox(actors, title, genre);
     }
     public List<FilmEntity> filter(String firstName,String lastName, String title, String genre){

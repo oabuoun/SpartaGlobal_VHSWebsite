@@ -63,7 +63,8 @@ public class EmployeeController {
                               @RequestParam(name = "lastName") String lastName,
                               @RequestParam(name = "email") String email,
                               @RequestParam(name = "address") String address,
-                              @RequestParam(name = "storeId") Integer storeId){
+                              @RequestParam(name = "storeId") Integer storeId,
+                              @RequestParam(name = "phoneNumber") String phoneNumber){
 
 
         CustomerEntity customerEntity = new CustomerEntity();
@@ -93,6 +94,10 @@ public class EmployeeController {
         AddressEntity addressEntity = new AddressEntity();
         addressEntity.setAddress(address);
         addressEntity.setCityId(1);
+        addressEntity.setDistrict("Narnia");
+        addressEntity.setCityId(1);
+        addressEntity.setLastUpdate(ts);
+        addressEntity.setPhone(phoneNumber);
         addressService.save(addressEntity);
         return "redirect:/employee";
         //when you try your best but you don't succeeeeeeed
