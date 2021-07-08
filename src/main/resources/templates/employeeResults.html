@@ -67,6 +67,8 @@
                     </span>
                     <span th:unless="${dueBack.get(iterStat.index).equals('stock')}">
                         <label>Sorry Not In Stock</label>
+                         <br>
+                        <label th:text="'Due back in stock on: ' + ${dueBack.get(iterStat.index)}">Due back in stock on: </label>
                     </span>
                     </div>
                 </div>
