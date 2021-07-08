@@ -5,6 +5,8 @@ import com.sparta.eng87.spartaglobal_vhswebsite.entities.RentalEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
@@ -32,6 +34,13 @@ public interface RentalRepository extends JpaRepository<RentalEntity, Integer>{
 
     List<Object[]> getRentedFilmsByCustomerId(int id);
 
+
+
+    @Query(value = "SELECT r.rental_date FROM rental r " +
+            "INNER JOIN inventory i on r.inventory_id = i.inventory_id " +
+            "WHERE i.film_id = ?1 AND r.return_date IS NULL " +
+            "ORDER BY rental_date LIMIT 1; ", nativeQuery = true)
+    Timestamp whenInStock(int film_id);
 
 
 }
