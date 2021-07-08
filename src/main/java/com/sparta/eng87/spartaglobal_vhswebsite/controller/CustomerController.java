@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.security.Principal;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class CustomerController {
@@ -29,8 +30,13 @@ public class CustomerController {
     {
         String username = principal.getName();
         Integer customerId = customerService.findCustomerIdByUsername(username);
-
-        model.addAttribute("currentlyRented", customerService.getCurrentlyRentedFilmsByCustomerId(customerId));
+        List<Object[]> currentlyRented = customerService.getCurrentlyRentedFilmsByCustomerId(customerId);
+        List<Integer> dueStatus = customerService.checkDueStatus(customerId);
+        for(Integer t : dueStatus){
+            System.out.println(t);
+        }
+        model.addAttribute("dueStatus", dueStatus);
+        model.addAttribute("currentlyRented", currentlyRented);
         model.addAttribute("previouslyRented", customerService.getPreviouslyRentedFilmsByCustomerId(customerId));
         model.addAttribute("username", username);
         return "userPage";
