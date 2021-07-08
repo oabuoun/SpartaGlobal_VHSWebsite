@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
 import javax.sql.DataSource;
 
@@ -37,8 +38,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/*").hasAuthority("EMPLOYEE")
                 .antMatchers("/user/*").hasAuthority("CUSTOMER")
                 .anyRequest().permitAll()
-                .and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler());
-
+                .and().formLogin().loginPage("/login").permitAll().successHandler(myAuthenticationSuccessHandler())
+        .and().logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .deleteCookies()
+        );
     }
 
 
