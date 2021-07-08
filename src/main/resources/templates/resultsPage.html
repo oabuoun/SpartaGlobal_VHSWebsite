@@ -11,6 +11,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body class="background">
 <nav th:replace="fragments/header.html :: navbar"></nav>
@@ -105,14 +106,33 @@ document.getElementById("main").style.marginLeft = "0";
                     </div>
 
                     <div class="card-footer">
-                        <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">
+
                         <span th:if="${inStock.get(iterStat.index)}">
-                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${film.filmId}" name="rent">Rent</button>
+
+                                <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-lg btn-block btn-outline-warning card-btn">Rent</button>
+
+                                <div id="id01" class="modal w3-animate-zoom">
+                                  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+                                  <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">
+                                    <div class="card box-shadow">
+                                        <div class="card-header">
+                                            <h2>Are you sure you want to rent this VHS?</h2>
+                                        </div>
+                                        <div class="clearfix">
+
+                                        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-lg btn-block btn-outline-danger card-btn button-width">Cancel</button>
+
+                                          <button type="submit" class="btn btn-lg btn-block btn-outline-success card-btn" th:id="${film.filmId}" name="rent">Rent</button>
+
+                                        </div>
+                                    </div>
+
+                                  </form>
+                                </div>
                         </span>
                         <span th:unless="${inStock.get(iterStat.index)}">
                             <button type="button" class="btn btn-lg btn-block btn-outline-warning card-btn" >Sorry out of Stock</button>
                         </span>
-                        </form>
                     </div>
 
 

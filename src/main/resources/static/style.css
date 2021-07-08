@@ -372,3 +372,19 @@ input[type=text]::placeholder {
     min-width: 600px;
     text-align: center;
 }
+
+.popup {
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-top: 5%;
+
+}
+
+.button-width {
+    margin: auto;
+    width: 50%;
+}
+
+.position {
+    position: fixed !important;
+}
