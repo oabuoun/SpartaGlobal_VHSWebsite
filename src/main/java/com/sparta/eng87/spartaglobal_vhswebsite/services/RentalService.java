@@ -20,7 +20,6 @@ public class RentalService {
     private RentalRepository rentalRepository;
     private InventoryRepository inventoryRepository;
     private LoginRepository loginRepository;
-    private static Integer rentalId = 17000;
 
     public RentalService(RentalRepository rentalRepository, InventoryRepository inventoryRepository, LoginRepository loginRepository) {
         this.rentalRepository = rentalRepository;

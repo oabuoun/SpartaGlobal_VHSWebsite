@@ -15,46 +15,54 @@
 <body>
 <nav th:replace="fragments/header.html :: navbar"></nav>
 <br/>
-<h1 align="center">USER PAGE</h1>
+<h1 align="center" th:text="'Welcome ' + ${username}">USER PAGE</h1>
 <br/>
 <h1 align="center">Currently Renting</h1>
-<form method="post" action="#">
+<form >
     <div class="container">
         <div class="card-deck mb-3 text-center">
-            <div th:each="film : ${films}" class="card mb-4 box-shadow">
+            <div th:if="${currentlyRented.equals(null)}" >
+                <h3>Nothing currently being rented</h3>
+            </div>
+            <div th:unless="${currentlyRented.equals(null)}">
+
+            <div th:each="film : ${currentlyRented}" class="card mb-4 box-shadow">
                 <div class="card-header">
-                    <h4 th:text="${film.title}" class="my-0 font-weight-normal">Movie 1</h4>
+<!--                    <h4 th:text="${film[iterStat.index].title}" class="my-0 font-weight-normal">Movie 1</h4>-->
+                    <h4 th:text="${film[0]}" class="my-0 font-weight-normal">Movie 1</h4>
                 </div>
                 <div class="card-body">
                     <ul class="list-unstyled mt-3 mb-4">
                         <li th:text="${film.description}">Desc1</li>
                     </ul>
-                    <label>Rent</label>
-                    <input type="checkbox" th:id="${film.filmId}" name="basket" th:value="${film.filmId}">
                 </div>
             </div>
+         </div>
         </div>
     </div>
 </form>
 <br/>
 <br/>
 <h1 align="center">Previously Rented</h1>
-<form method="post" action="#">
+<form >
     <div class="container">
         <div class="card-deck mb-3 text-center">
-            <div th:each="film : ${films}" class="card mb-4 box-shadow">
+            <div th:if="${previouslyRented.equals(null)}" >
+                <h3>No rental history</h3>
+            </div>
+            <div th:unless="${currentlyRented.equals(null)}">
+            <div th:each="film : ${previouslyRented}" class="card mb-4 box-shadow">
                 <div class="card-header">
-                    <h4 th:text="${film.title}" class="my-0 font-weight-normal">Movie 1</h4>
+                    <h4 th:text="${film[0]}" class="my-0 font-weight-normal">Movie 1</h4>
                 </div>
                 <div class="card-body">
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li th:text="${film.description}">Desc1</li>
+                        <li th:text="${film[1]}">Desc1</li>
                     </ul>
-                    <label>Rent</label>
-                    <input type="checkbox" th:id="${film.filmId}" name="basket" th:value="${film.filmId}">
                 </div>
             </div>
         </div>
+            </div>
     </div>
 </form>
 <footer>

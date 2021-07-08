@@ -10,32 +10,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-<nav th:replace="fragments/header.html :: navbar"></nav>
-<main role="main" class="container">
 
-    <div class="starter-template text-center">
-        <h1>Employee Page</h1>
-    </div>
-</main>
-<div class="container center-search">
-    <form th:action="@{/employeeSearch}" method="post" novalidate="novalidate">
-        <div class="row col-lg-12 row center-search">
-            <div class="center-search">
-                <input type="text" class="form-control search-slt" name="search" placeholder="Search Films" size="100">
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 p-0 center-search">
-                <button type="submit" class="btn btn-warning wrn-btn" value="submit">Search</button>
-            </div>
-        </div>
-    </form>
-</div>
-<br>
-<div class="container center-search">
-    <div class="row col-lg-12 row center-search">
-        <div class="col-lg-3 col-md-3 col-sm-12 p-0" style="display: flex;">
-            <a href="#" style="margin-right: 15px;">
-                <button type="submit" class="btn btn-warning wrn-btn" value="Add User" style="min-height: 60px; min-width: 400px">Add User</button>
-            </a>
 
             <a href="#">
                 <button type="submit" class="btn btn-warning wrn-btn" value="Add Employee" style="min-height: 60px; min-width: 400px;">Add Employee</button>
