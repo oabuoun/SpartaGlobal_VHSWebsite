@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.0.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
-
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/5.0.2/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.min.js"></script>
-
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
 </head>
 <body class="background">
-<div class="container container-p5" style="padding-top: 2rem;">
+<nav th:replace="fragments/header.html :: navbar"></nav>
+
+<div class="add-employee">
+    <div class="form-group">
     <h1 style="padding-bottom: 1rem;">Add an employee</h1>
     <form th:action="@{/addEmployee}" method="post">
         <label>Username</label>
@@ -39,11 +43,12 @@
         <label>Store ID</label>
         <label><input type="number" name="storeId"></label>
         <br>
-<!--        <label>Picture link</label>-->
-<!--        <label><input type="text" name="pictureLink"></label>-->
-<!--        <br>-->
         <input type="submit" value="Add Employee">
     </form>
+    </div>
 </div>
+<footer>
+    <nav th:replace="fragments/footer.html :: navbar"></nav>
+</footer>
 </body>
 </html>
