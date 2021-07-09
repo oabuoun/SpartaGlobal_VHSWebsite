@@ -15,68 +15,44 @@
     <h1 class="display-4">Results</h1>
 </div>
 
-
-<!--<section class="filter">-->
-<!--    <div class="container">-->
-<!--        <form th:action="@{/filteredSearch}" method="post" novalidate="novalidate">-->
-<!--            <div class="row">-->
-<!--                <div class="row">-->
-<!--                    <div class="col">-->
-<!--                        <input type="text" class="form-control search-slt" name="filterSearch"-->
-<!--                               placeholder="Enter data..." size="60">-->
-<!--                    </div>-->
-<!--                    <div class="col">-->
-<!--                        <select class="form-control search-slt" name="filterSearchBy" id="exampleFormControlSelect1">-->
-<!--                            <option value="title">Title</option>-->
-<!--                            <option value="genre">Genre</option>-->
-<!--                            <option value="actor">Actor</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                    <div class="col">-->
-<!--                        <button type="submit" class="btn btn-warning wrn-btn" value="submit">Search</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</section>-->
-
 <br/>
 <br/>
-
+<section  class="text-center my-5">
 <div class="container">
-    <div class="card-deck mb-3 text-center">
-        <div th:each=" film,iterStat : ${films}" class="card mb-4 box-shadow">
-            <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">
+    <div class="row text-center card-deck">
+        <div th:each=" film,iterStat : ${films}" class="col-sm-4">
+            <span th:if="${dueBack.get(iterStat.index).equals('No Inventory')}">
+                <button class="btn btn-lg btn-block btn-outline-warning card-btn" th:text="${dueBack.get(iterStat.index)}"></button>
+            </span>
+            <div class="card mb-4 box-shadow">
+<!--            <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">-->
+
                 <div class="card-header">
                     <h4 th:text="${film.title}" class="my-0 font-weight-normal">Movie 1</h4>
                 </div>
+
                 <div class="card-body">
-                    <ul class="list-unstyled mt-3 mb-4">
+                    <ul class="list-unstyled mt-0 mb-5">
                         <li th:text="${film.description}">Desc1</li>
                     </ul>
-
-                    <!--                    <label>Rent</label>-->
-                    <!--                    <input type="checkbox" th:id="${film.filmId}" name="basket" th:value="${film.filmId}">-->
-
-                    <!--                    <button type="button" class="btn btn-lg btn-block btn-outline-warning">Rent</button>-->
+                </div>
 
                     <div class="card-footer">
-                    <span th:if="${inStock.get(iterStat.index)}">
-                        <label>In Stock</label>
+                        <span th:if="${inStock.get(iterStat.index)}">
+                            <button class="btn btn-lg btn-block btn-outline-warning card-btn">In Stock</button>
+                        </span>
+                        <span th:unless="${dueBack.get(iterStat.index).equals('stock')}">
+                            <button class="btn btn-lg btn-block btn-outline-warning card-btn" th:text="${dueBack.get(iterStat.index)}"></button>
+    <!--                        <label th:text="'Due back in stock on: ' + ${dueBack.get(iterStat.index)}">Due back in stock on: </label>-->
+                        </span>
                     </span>
-                    <span th:unless="${dueBack.get(iterStat.index).equals('stock')}">
-                        <label>Sorry Not In Stock</label>
-                         <br>
-                        <label th:text="'Due back in stock on: ' + ${dueBack.get(iterStat.index)}">Due back in stock on: </label>
-                    </span>
-                    </div>
                 </div>
-            </form>
+<!--            </form>-->
+            </div>
         </div>
     </div>
-    <!--        <input type="submit" value="Rent Selection">-->
 </div>
 
+</section>
 </body>
 </html>
