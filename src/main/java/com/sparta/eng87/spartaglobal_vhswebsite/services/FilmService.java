@@ -104,7 +104,7 @@ public class FilmService {
                 if(rentalRepository.whenInStock(filmEntityList.get(i).getFilmId())!=null){
                 Timestamp temp = rentalRepository.whenInStock(filmEntityList.get(i).getFilmId());
                 temp.setTime(temp.getTime() + 604800000);
-                backWhen.add("Due back in stock on: "+temp.toString().substring(0,11));}
+                backWhen.add("Due back on: "+temp.toString().substring(0,11));}
                 else{
                     backWhen.add("No Inventory");
                 }
