@@ -101,10 +101,13 @@ public class FilmService {
         List<String> backWhen = new ArrayList<>();
         for (int i = 0; i < filmEntityList.size(); i++) {
             if (!inStock.get(i)) {
-
+                if(rentalRepository.whenInStock(filmEntityList.get(i).getFilmId())!=null){
                 Timestamp temp = rentalRepository.whenInStock(filmEntityList.get(i).getFilmId());
                 temp.setTime(temp.getTime() + 604800000);
-                backWhen.add(temp.toString().substring(0,11));
+                backWhen.add("Due back in stock on: "+temp.toString().substring(0,11));}
+                else{
+                    backWhen.add("No Inventory");
+                }
 
             } else backWhen.add("stock");
         }
