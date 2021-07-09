@@ -8,10 +8,14 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
 </head>
 <body class="background">
-<div class="container container-p5" style="padding-top: 2rem;">
-    <h1 style="padding-bottom: 1rem;">Add a user</h1>
+<nav th:replace="fragments/header.html :: navbar"></nav>
+<div class = "add-employee">
+    <h1>Add a user</h1>
     <form th:action="@{/addCustomer}" method="post">
         <label>Username</label>
         <label><input type="text" name="username"></label>
@@ -40,5 +44,8 @@
         <input type="submit" value="Add User">
     </form>
 </div>
+<footer>
+    <nav th:replace="fragments/footer.html :: navbar"></nav>
+</footer>
 </body>
 </html>
