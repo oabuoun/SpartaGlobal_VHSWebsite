@@ -81,8 +81,12 @@
                     </ul>
                 </div>
                 <div class="card-footer">
-                    <ul class="list-unstyled mt-0 mb-5">
+                    <ul class="list-unstyled mt-0 mb-5" th:if="${film[4] <= 7}">
                         <li th:text="'Rented on: ' + ${film[2]}">Desc1</li>
+                    </ul>
+                    <ul class="list-unstyled mt-0 mb-5" th:unless="${film[4] <= 7}">
+                        <li th:text="'Was due on: ' + ${film[2]}">Desc1</li>
+                        <li th:text="'Late fees: £' + ${#numbers.formatDecimal(film[4],0,'COMMA', 2, 'POINT')}">Desc1</li>
                     </ul>
                 </div>
             </div>
