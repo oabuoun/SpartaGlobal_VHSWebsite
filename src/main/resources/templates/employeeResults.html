@@ -21,9 +21,7 @@
 <div class="container">
     <div class="row text-center card-deck">
         <div th:each=" film,iterStat : ${films}" class="col-sm-4">
-            <span th:if="${dueBack.get(iterStat.index).equals('No Inventory')}">
-                <button class="btn btn-lg btn-block btn-outline-warning card-btn" th:text="${dueBack.get(iterStat.index)}"></button>
-            </span>
+
             <div class="card mb-4 box-shadow">
 <!--            <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">-->
 
