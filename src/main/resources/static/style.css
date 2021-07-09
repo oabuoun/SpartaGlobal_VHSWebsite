@@ -388,3 +388,15 @@ input[type=text]::placeholder {
 .position {
     position: fixed !important;
 }
+
+.form-employee {
+    max-width: 330px;
+    align-content: center;
+    margin: 0 auto;
+}
+
+.employee-edit-form{
+    max-width: 500px;
+    align-content: center;
+    margin: 0 auto;
+}
