@@ -15,8 +15,13 @@
 
 <body class="background">
 <nav th:replace="fragments/header.html :: navbar"></nav>
+    <span th:if="${error}">
+        <br/>
+        <h4 style="text-align: center; color: red">Employees Cannot Rent films from An Employee Account</h4>
+    </span>
 
 <section class="text-center my-5">
+
     <div class="container">
         <!-- Section heading -->
         <h2 class="h1-responsive font-weight-bold my-5 ">Most Popular</h2>
@@ -48,8 +53,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[0][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[0][0]}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -87,8 +92,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[2][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[2][0]}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -110,8 +115,8 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[3][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[3][0]}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -128,8 +133,8 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[4][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[4][0]}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -146,8 +151,8 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[5][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[5][0]}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -168,8 +173,8 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[6][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[6][0]}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -186,8 +191,8 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[7][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[7][0]}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -203,8 +208,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[8][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[8][0]}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -249,8 +254,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[0].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[0].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -266,8 +271,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[1].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[1].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -283,8 +288,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[2].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[2].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -305,8 +310,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[3].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[3].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -322,11 +327,10 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[4].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[4].filmId}" name="rent">Rent</button>
                                         </form>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -340,8 +344,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[5].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[5].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -361,8 +365,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[6].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[6].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -378,8 +382,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[7].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[7].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -395,8 +399,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[8].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[8].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -440,8 +444,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[0].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[0].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -457,8 +461,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[1].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[1].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -474,8 +478,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[2].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[2].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -497,8 +501,8 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[3].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[3].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -515,8 +519,8 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[4].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[4].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -532,8 +536,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[5].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[5].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -554,8 +558,8 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[6].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[6].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -572,8 +576,8 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[7].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[7].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
@@ -589,8 +593,8 @@
                                         </ul>
                                     </div>
                                     <div class="card-footer">
-                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
-                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[8].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[8].filmId}" name="rent">Rent</button>
                                         </form>
                                     </div>
                                 </div>
