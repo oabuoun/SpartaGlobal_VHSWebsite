@@ -1,10 +1,10 @@
 package com.sparta.eng87.spartaglobal_vhswebsite.POJO;
 
 public class AdvancedSearchTerms {
-    private static String firstName = "";
-    private static String lastName = "";
-    private static String title = "";
-    private static String genre = "";
+    public static String firstName = "";
+    public static String lastName = "";
+    public static String title = "";
+    public static String genre = "";
 
     public AdvancedSearchTerms() {
     }
@@ -25,7 +25,7 @@ public class AdvancedSearchTerms {
         this.lastName = lastName;
     }
 
-    public static String getTitle() {
+    public String getTitle() {
         return title;
     }
 
