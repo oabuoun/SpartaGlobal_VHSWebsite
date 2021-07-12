@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body class="background">
+<nav th:replace="fragments/header.html :: navbar"></nav>
+<div class="container container-p5" style="padding-top: 2rem;">
+    <h1 th:text="${film.title}" style="padding-bottom: 1rem;">Film Title</h1>
+    <p>Film Description: <span th:text="${film.filmDescription}">Description</span></p>
+    <p>Release Date: <span th:text="${film.releaseDate}">Release Date</span></p>
+    <p>Language: <span th:text="${film.language}">Language</span></p>
+    <p>Length: <span th:text="${film.length}">Length</span></p>
+    <p>Rating: <span th:text="${film.rating}">Rating</span></p>
+    <p>Special features: <span th:text="${film.specialFeatures}">Special Features</span></p>
+</div>
+</body>
+</html>

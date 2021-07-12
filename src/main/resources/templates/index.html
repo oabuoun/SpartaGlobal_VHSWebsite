@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+
+<body class="background">
+<nav th:replace="fragments/header.html :: navbar"></nav>
+    <span th:if="${error}">
+        <br/>
+        <h4 style="text-align: center; color: red">Employees Cannot Rent films from An Employee Account</h4>
+    </span>
+
+<section class="text-center my-5">
+
+    <div class="container">
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold my-5 ">Most Popular</h2>
+
+        <div class="wrapper-carousel-fix">
+            <!-- Carousel Wrapper -->
+            <div id="carousel-example-1" class="carousel no-flex testimonial-carousel slide carousel-fade" data-ride="carousel"
+                 data-interval="5000">
+                <!--Slides-->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-1" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-1" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-1" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <!--First slide-->
+                    <div class="carousel-item active">
+                        <div class="row text-center card-deck">
+
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${popularVHS[0][1]}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5" >
+                                            <li th:text="${popularVHS[0][2]}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[0][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[0][0]}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${popularVHS[1][1]}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${popularVHS[1][2]}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+
+
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[1][0]})}">
+                                        <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[1][0]}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${popularVHS[2][1]}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${popularVHS[2][2]}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[2][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[2][0]}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Second slide-->
+                    <div class="carousel-item">
+                        <div class="row text-center card-deck">
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${popularVHS[3][1]}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${popularVHS[3][2]}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[3][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[3][0]}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${popularVHS[4][1]}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${popularVHS[4][2]}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[4][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[4][0]}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${popularVHS[5][1]}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${popularVHS[5][2]}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[5][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[5][0]}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row text-center card-deck">
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${popularVHS[6][1]}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${popularVHS[6][2]}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[6][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[6][0]}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${popularVHS[7][1]}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${popularVHS[7][2]}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[7][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[7][0]}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${popularVHS[8][1]}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${popularVHS[8][2]}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${popularVHS[8][0]})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${popularVHS[8][0]}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel Wrapper -->
+        </div>
+    </div>
+</section>
+
+
+<section class="text-center my-5">
+    <div class="container">
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold my-5">Recently Added</h2>
+
+        <div class="wrapper-carousel-fix">
+            <!-- Carousel Wrapper -->
+            <div id="carousel-example-2" class="carousel no-flex testimonial-carousel slide carousel-fade" data-ride="carousel"
+                 data-interval="5000">
+                <!--Slides-->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-2" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <!--First slide-->
+                    <div class="carousel-item active">
+                        <div class="row text-center card-deck">
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${recentVHS[0].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${recentVHS[0].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[0].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[0].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${recentVHS[1].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${recentVHS[1].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[1].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[1].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${recentVHS[2].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${recentVHS[2].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[2].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[2].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Second slide-->
+                    <div class="carousel-item">
+                        <div class="row text-center card-deck">
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${recentVHS[3].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${recentVHS[3].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[3].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[3].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${recentVHS[4].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${recentVHS[4].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[4].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[4].filmId}" name="rent">Rent</button>
+                                        </form>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${recentVHS[5].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${recentVHS[5].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[5].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[5].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row text-center card-deck">
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${recentVHS[6].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${recentVHS[6].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[6].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[6].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${recentVHS[7].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${recentVHS[7].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[7].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[7].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${recentVHS[8].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${recentVHS[8].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${recentVHS[8].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${recentVHS[8].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel Wrapper -->
+        </div>
+    </div>
+</section>
+
+
+<section class="text-center my-5">
+    <div class="container">
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold my-5">Recently Returned</h2>
+        <div class="wrapper-carousel-fix">
+            <!-- Carousel Wrapper -->
+            <div id="carousel-example-3" class="carousel no-flex testimonial-carousel slide carousel-fade" data-ride="carousel"
+                 data-interval="5000">
+                <!--Slides-->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-3" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-3" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-3" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <!--First slide-->
+                    <div class="carousel-item active">
+                        <div class="row text-center card-deck">
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[0].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${returnedVHS[0].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[0].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[0].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[1].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${returnedVHS[1].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[1].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[1].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[2].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${returnedVHS[2].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[2].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[2].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Second slide-->
+                    <div class="carousel-item">
+                        <div class="row text-center card-deck">
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[3].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${returnedVHS[3].description}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[3].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[3].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[4].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${returnedVHS[4].description}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[4].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[4].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[5].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${returnedVHS[5].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[5].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[5].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row text-center card-deck">
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[6].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${returnedVHS[6].description}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[6].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[6].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[7].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${returnedVHS[7].description}">Desc1</li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[7].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[7].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal" th:text="${returnedVHS[8].title}">Movie 1</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mt-0 mb-5">
+                                            <li th:text="${returnedVHS[8].description}">Desc1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-footer">
+                                        <form method="post" th:action="@{/rent/{id}(id = ${returnedVHS[8].filmId})}">
+                                            <button type="submit" class="btn btn-lg btn-block btn-outline-warning card-btn" th:id="${returnedVHS[8].filmId}" name="rent">Rent</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Carousel Wrapper -->
+        </div>
+    </div>
+</section>
+
+<footer>
+    <nav th:replace="fragments/footer.html :: navbar"></nav>
+</footer>
+</body>
+</html>

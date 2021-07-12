@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Results</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body class="background">
+<nav th:replace="fragments/header.html :: navbar"></nav>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4" style="font-weight: 500">Results</h1>
+</div>
+<br/>
+<br/>
+<section  class="text-center my-5">
+<div class="container">
+    <div class="row text-center card-deck">
+        <div th:each=" film,iterStat : ${films}" class="col-sm-4">
+
+            <div class="card mb-4 box-shadow">
+<!--            <form method="post" th:action="@{/rent/{id}(id = ${film.filmId})}">-->
+
+                <div class="card-header">
+                    <h4 th:text="${film.title}" class="my-0 font-weight-normal">Movie 1</h4>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-unstyled mt-0 mb-5">
+                        <li th:text="${film.description}">Desc1</li>
+                    </ul>
+                </div>
+
+                    <div class="card-footer">
+                        <span th:if="${inStock.get(iterStat.index)}">
+                            <button class="btn btn-lg btn-block btn-outline-warning card-btn">In Stock</button>
+                        </span>
+                        <span th:unless="${dueBack.get(iterStat.index).equals('stock')}">
+                            <button class="btn btn-lg btn-block btn-outline-warning card-btn" th:text="${dueBack.get(iterStat.index)}"></button>
+    <!--                        <label th:text="'Due back in stock on: ' + ${dueBack.get(iterStat.index)}">Due back in stock on: </label>-->
+                        </span>
+                    </span>
+                </div>
+<!--            </form>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+</body>
+</html>

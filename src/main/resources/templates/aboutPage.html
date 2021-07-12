@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script></head>
+<body class="background">
+<nav th:replace="fragments/header.html :: navbar"></nav>
+
+<section class="about">
+<div class="about">
+    <br/>
+    <h1>About Us</h1>
+    <br/>
+    <img th:src="@{images/thebeegod.png}" th:width="500px" th:border="20">
+    <br/>
+    <br/>
+    <h3>Our History</h3>
+    <p>Auota Time, German born neurosurgeon with doctorates in linguistics, anthropology, astrophysics and quantum string theory, came to Skegness in the 1960s with pocket full of hopes and dreams. He had left a happy family and farm home of 22 horses, 13 cows, 3 pigs and a duckbill platypus to make his name in the world. Arriving in the UK, he loved the people, ever changing weather, mediocre football but most importantly, cinema.
+
+        Auota spend most of his free time watching movies of all genres at the "Low High Street Cinema and Bingo hall" near his university. Unknown to him, the poor cinema was only able to afford seemingly low budget bootleg movies. However, where many saw trash, Auota saw treasure
+
+        The stories captivated his imagination and he often spoke about his love for classics such as "Cheese on Toast Ghost 3" and the ever popular "Mutant Killer Remote Controls vs Robot House Plants". He longed to share his passion with his university friends.
+
+        A flash of inspiration came one day when, while accidentally walking onto the university baseball pitch, he was struck with a stray ball which knocked him out. The last thing he remembered was the team's logo of a bumble bee. While recovering in hospital, He saw a divine vision of 2 words in those familiar yellow and black colors, Press Play
+
+        He set up the first video store in his final year of university, sacrificing his qualification for his love of film. Over time, the franchise became a popular hotspot for movie lovers and students in the local area
+
+        Over time, the rise of streaming services and DVDs hurt the business but a die hard group of VHS enthusiasts kept the business alive and would become the main customer base for Press Play. Now, under the guidance of his son, Justin Time, Press Play hopes to become the leading provide of sub-par VHS entertainment
+
+        If the mind is the greatest cinema, then we ready to take the ticket of your mind on a journey of discovery - Aouta Time </p>
+    <br>
+    <h3>Our Stores</h3>
+    <div class="row mb-2">
+    <div class="col-md-6">
+        <div>
+            <div class="card " style="top: 18px">
+                <div class="text-xs-center header">Find Us Here</div>
+                <div class="card-block text-xs-center">
+                    <h4>Address</h4>
+                    <div>
+                        Somewhere<br />
+                        Somewhere<br />
+                        #(+44) 1234 1234<br />
+                        something@company.com<br />
+                    </div>
+                    <hr />
+                    <div id="map1" class="map">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div>
+            <div class="card " style="top: 18px">
+                <div class="text-xs-center header">Find Us Here</div>
+                <div class="card-block text-xs-center">
+                    <h4>Address</h4>
+                    <div>
+                        Somewhere<br />
+                        Somewhere<br />
+                        #(+44) 1234 1234<br />
+                        something@company.com<br />
+                    </div>
+                    <hr />
+                    <div id="map2" class="map">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    <br>
+</div>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        function init_map1() {
+            var myLocation = new google.maps.LatLng(38.885516, -77.09327200000001);
+            var mapOptions = {
+                center: myLocation,
+                zoom: 16
+            };
+            var marker = new google.maps.Marker({
+                position: myLocation,
+                title: "Property Location"
+            });
+            var map = new google.maps.Map(document.getElementById("map1"),
+                mapOptions);
+            marker.setMap(map);
+        }
+        init_map1();
+    });
+</script>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        function init_map2() {
+            var myLocation = new google.maps.LatLng(38.885516, -77.09327200000001);
+            var mapOptions = {
+                center: myLocation,
+                zoom: 16
+            };
+            var marker = new google.maps.Marker({
+                position: myLocation,
+                title: "Property Location"
+            });
+            var map = new google.maps.Map(document.getElementById("map2"),
+                mapOptions);
+            marker.setMap(map);
+        }
+        init_map2();
+    });
+</script>
+</section>
+<footer>
+    <nav th:replace="fragments/footer.html :: navbar"></nav>
+</footer>
+</body>
+</html>

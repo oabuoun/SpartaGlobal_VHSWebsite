@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body class="background">
+
+<nav th:replace="fragments/header.html :: navbar"></nav>
+<br>
+    <div class="text-center">
+        <h1>Employee Page</h1>
+    </div>
+
+
+    <form th:action="@{/employeeSearch}" method="post" novalidate="novalidate" class="form-employee">
+        <div class="form-group">
+            <div class="center-search" >
+                <input type="text" class="form-control search-slt" name="search" placeholder="Search Films">
+            </div>
+            <div class="center-search">
+                <button type="submit" class="btn btn-warning wrn-btn" value="submit">Search</button>
+            </div>
+        </div>
+    </form>
+
+<br>
+<div class="form-employee">
+            <a href="/addUser">
+                <button type="submit" class="btn btn-warning wrn-btn" value="Add User">Add User</button>
+            </a>
+    <br/>
+    <br/>
+            <a href="/addEmployee">
+                <button type="submit" class="btn btn-warning wrn-btn" value="Add Employee">Add Employee</button>
+            </a>
+</div>
+<br>
+<br/>
+
+<!--    <form th:action="@{/removeEditUser}" method="post" novalidate="novalidate">-->
+<!--        <div class="employee-edit-form mb-3">-->
+<!--                <select class="form-control search-slt" name="user" id="exampleFormControlSelect1">-->
+<!--                    <option selected disabled value="">Select a User</option>-->
+<!--                    <option value="title">Title</option>-->
+<!--                    <option value="genre">Genre</option>-->
+<!--                    <option value="actor">Actor</option>-->
+<!--                </select>-->
+<!--            <div class="input-group-prepend">-->
+<!--                <button type="submit" class="btn btn-warning wrn-btn" value="submit" name="remove">Remove</button>-->
+<!--                <button type="submit" class="btn btn-warning wrn-btn" value="submit" name="edit">Edit</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+
+<!--    <form th:action="@{/removeEditEmployee}" method="post" novalidate="novalidate">-->
+<!--        <div class="employee-edit-form mb-3">-->
+<!--                <select class="form-control search-slt" name="employee">-->
+<!--                    <option selected disabled value="">Select an Employee</option>-->
+<!--                    <option value="title">Title</option>-->
+<!--                    <option value="genre">Genre</option>-->
+<!--                    <option value="actor">Actor</option>-->
+<!--                </select>-->
+<!--            <div class="input-group-prepend">-->
+<!--                <button type="submit" class="btn btn-warning wrn-btn" value="submit" name="remove">Remove</button>-->
+<!--                <button type="submit" class="btn btn-warning wrn-btn" value="submit" name="edit">Edit</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
+
+<footer>
+    <nav th:replace="fragments/footer.html :: navbar"></nav>
+</footer>
+</body>
+</html>
