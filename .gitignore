@@ -70,3 +70,6 @@ out/
 
 application.properties
 .mysql_password
+!init-sql
+init-sql/*
+!init-sql/00-grant-access.sql

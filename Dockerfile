@@ -4,5 +4,4 @@ ENV CLASSPATH=/mysql-connector-java.jar:${CLASSPATH}
 RUN mkdir -p /usr/src
 COPY app /usr/src/app
 WORKDIR /usr/src/app
-RUN mvn spring-boot:build-image
 CMD ["mvn", "spring-boot:run"]
