@@ -1,7 +1,7 @@
 sudo chmod -R a+rwx /data/mysql/
 
 export MYSQL_USER=root
-export MYSQL_ROOT_PASSWORD="$(cat ./.mysql_password)"
+export MYSQL_ROOT_PASSWORD=$(cat ./.mysql_password)
 
 docker-compose up -d
 
