@@ -40,54 +40,55 @@ You only need to install Docker and Docker-Compose and run the following command
 
 1.  Clone the repository
 
-```bash
-git clone https://github.com/oabuoun/SpartaGlobal_VHSWebsite.git
-cd SpartaGlobal_VHSWebsite
-```
+  ```bash
+  git clone https://github.com/oabuoun/SpartaGlobal_VHSWebsite.git
+  cd SpartaGlobal_VHSWebsite
+  ```
 
 2.  Add your SQL files (if you want to initialise the database) under the folder `init-sql`.
 
-***Don't delete the 00-grant-access.sql***
+  ***Don't delete the 00-grant-access.sql***
 
 3.  If you are using a username other than `root` to access the database, edit `00-grant-access.sql` and change `root` to `YOUR_MYSQL_SERVER_USERNAME`
 
 4.  Create a file `application.properties` in `SpartaGlobal_VHSWebsite` as follows:
-```
-spring.datasource.url=jdbc:mysql://mysql_dbms:3306/sakila
-spring.datasource.username=YOUR_MYSQL_SERVER_USERNAME
-spring.datasource.password=YOUR_MYSQL_SERVER_PASSWORD
-spring.jpa.hibernate.ddl-auto= update
-spring.jpa.show-sql= true
-```
-Change the parameters (in capitals letters) to match your installation settings
+
+  ```
+  spring.datasource.url=jdbc:mysql://mysql_dbms:3306/sakila
+  spring.datasource.username=YOUR_MYSQL_SERVER_USERNAME
+  spring.datasource.password=YOUR_MYSQL_SERVER_PASSWORD
+  spring.jpa.hibernate.ddl-auto= update
+  spring.jpa.show-sql= true
+  ```
+  Change the parameters (in capitals letters) to match your installation settings
 
 5.  Create a file `.mysql_password` in `SpartaGlobal_VHSWebsite` as follows:
 
-```
-YOUR_MYSQL_SERVER_PASSWORD
-```
-***Don't add any newline at the end of the password***
+  ```
+  YOUR_MYSQL_SERVER_PASSWORD
+  ```
+  ***Don't add any newline at the end of the password***
 
 6.  Run the following commands to start the
-```bash
-./launch.sh
-```
+  ```bash
+  ./launch.sh
+  ```
 
 7.  Open your browser and navigate to `http://localhost:8080`
 
 8.  To show the logs:
-```bash
-docker-compose logs -f
-```
+  ```bash
+  docker-compose logs -f
+  ```
 
 9.  To stop all containers:
-```bash
-./stop.sh
-```
+  ```bash
+  ./stop.sh
+  ```
 
 10.  To destroy the installation (including the data in the database and all settings):
-```bash
-./destroy.sh
-```
+  ```bash
+  ./destroy.sh
+  ```
 
 11.  Enjoy !
