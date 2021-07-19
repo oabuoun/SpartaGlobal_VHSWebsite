@@ -68,4 +68,5 @@ out/
 *.ipr
 *.iws
 
-src/main/resources/application.properties
+application.properties
+.mysql_password
