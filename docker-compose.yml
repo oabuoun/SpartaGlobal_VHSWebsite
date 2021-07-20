@@ -1,26 +1,26 @@
 version: '3'
 
 services:
-  mysql_dbms:
+  vhs_mysql_dbms:
     image: mysql/mysql-server
-    container_name: mysql_dbms
+    container_name: vhs_mysql_dbms
     environment:
       MYSQL_ROOT_PASSWORD:
     ports:
       - "3306:3306"
     volumes:
-      - /data/mysql:/var/lib/mysql
+      - /data/vhs_mysql_dbms:/var/lib/mysql
       - ./init-sql:/docker-entrypoint-initdb.d
     networks:
       network_app:
         aliases:
-          - mysql_dbms
+          - vhs_mysql_dbms
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: pma
+    container_name: vhs_pma
     environment:
-      PMA_HOST: mysql_dbms
+      PMA_HOST: vhs_mysql_dbms
       PMA_PORT: 3306
       PMA_ARBITRARY: 1
     restart: always

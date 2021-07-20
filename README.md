@@ -54,7 +54,7 @@ You only need to install Docker and Docker-Compose and run the following command
 4.  Create a file `application.properties` in `SpartaGlobal_VHSWebsite` as follows:
 
   ```
-  spring.datasource.url=jdbc:mysql://mysql_dbms:3306/sakila
+  spring.datasource.url=jdbc:mysql://vhs_mysql_dbms:3306/sakila
   spring.datasource.username=YOUR_MYSQL_SERVER_USERNAME
   spring.datasource.password=YOUR_MYSQL_SERVER_PASSWORD
   spring.jpa.hibernate.ddl-auto= update
